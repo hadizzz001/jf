@@ -20,6 +20,103 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <>
+  <title>Jardali Food Machines</title>
+  <link
+    rel="dns-prefetch preconnect"
+    href="https://cdn11.bigcommerce.com/s-1g6otlwo"
+    crossOrigin=""
+  />
+  <link
+    rel="dns-prefetch preconnect"
+    href="https://fonts.googleapis.com/"
+    crossOrigin=""
+  />
+  <link
+    rel="dns-prefetch preconnect"
+    href="https://fonts.gstatic.com/"
+    crossOrigin=""
+  />
+  <meta
+    name="description"
+    content="Jardali Food Machines - Your backyard Shawarma Grill. Small Grill, Huge Flavor. Buy Shawarma machines or Doner machine and start to cook delicious food."
+  />
+  <meta
+    name="keywords"
+    content="shawarma machine, gyro machine, Jardali Food Machines, shawarma grill, doner kebab machine, Bread maker machine"
+  />
+  <link rel="canonical" href="index.html" />
+  <meta name="platform" content="bigcommerce.stencil" />
+  {/* BEGIN Preloading first images */}
+  <link
+    rel="preload"
+    imagesrcset="https://cdn11.bigcommerce.com/s-1g6otlwo/images/stencil/80w/carousel/95/b1.jpg?c=2 80w, https://cdn11.bigcommerce.com/s-1g6otlwo/images/stencil/160w/carousel/95/b1.jpg?c=2 160w, https://cdn11.bigcommerce.com/s-1g6otlwo/images/stencil/320w/carousel/95/b1.jpg?c=2 320w, https://cdn11.bigcommerce.com/s-1g6otlwo/images/stencil/640w/carousel/95/b1.jpg?c=2 640w, https://cdn11.bigcommerce.com/s-1g6otlwo/images/stencil/960w/carousel/95/b1.jpg?c=2 960w, https://cdn11.bigcommerce.com/s-1g6otlwo/images/stencil/1280w/carousel/95/b1.jpg?c=2 1280w, https://cdn11.bigcommerce.com/s-1g6otlwo/images/stencil/1920w/carousel/95/b1.jpg?c=2 1920w"
+    as="image"
+    fetchpriority="high"
+  />
+  <link
+    rel="preload"
+    href="https://cdn11.bigcommerce.com/s-ejzxecfwcm/images/stencil/original/image-manager/section1-img.png"
+    as="image"
+    fetchpriority="high"
+  />
+  {/* END Preloading first images */}
+  <link
+    href="https://cdn11.bigcommerce.com/s-1g6otlwo/product_images/sp-favicon%20%281%29.png?t=1679983327"
+    rel="shortcut icon"
+  />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1 , maximum-scale=5"
+  />
+  <link
+    href="https://fonts.googleapis.com/css?family=Poppins:700,400&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    data-stencil-stylesheet=""
+    href="https://cdn11.bigcommerce.com/s-1g6otlwo/stencil/59095400-c1c1-013c-80e6-0210eb07f2b9/e/7d283170-74c7-013d-6dcc-46050de29e5d/css/theme-59a8b4f0-74c7-013d-41de-3a5d2736d56d.css"
+    rel="stylesheet"
+  />
+  {/* Start Tracking Code for analytics_facebook */}
+  <noscript>
+    &lt;img height="1" width="1" style="display:none" alt="null"
+    src="https://www.facebook.com/tr?id=5160896437326690&amp;ev=PageView&amp;noscript=1&amp;a=plbigcommerce1.2&amp;eid=store-1-prd-us-central1-190318915116"/&gt;
+  </noscript>
+  {/* End Tracking Code for analytics_facebook */}
+  {/* Start Tracking Code for analytics_googleanalytics4 */}
+  {/* Global site tag (gtag.js) - Google Analytics */}
+  {/* End Tracking Code for analytics_googleanalytics4 */}
+  {/* Start Tracking Code for analytics_siteverification */}
+  <meta
+    name="google-site-verification"
+    content="1usF5OmZ8Efc8uP4kVOlChsvaObNr7EHvbjLvDwtoQo"
+  />
+  {/* End Tracking Code for analytics_siteverification */}
+  {/* Google tag (gtag.js) */}
+</>
+<style
+  dangerouslySetInnerHTML={{
+    __html:
+      "\n  .header .Headerbox .navPages-container .navPages .navPages-item .navPages-action.has-subMenu{\n    color:white;\n  }\n  .header .Headerbox .navPages-container .navPages .navPages-list .navPages-item .navPages-action{\n    color:white;\n  }\n"
+  }}
+/>
+ 
+<style
+  dangerouslySetInnerHTML={{
+    __html:
+      "\n\n.homepage-video-section .video-box .video-body .video-thumbnail-box .Video-content-box-with-text{\n  width:100%;\n}\n\n.homepage-video-section .video-box .video-body .video-thumbnail-box .Video-content-box-with-text .video-content-inner{\n  width:100%;\n}\n.nichefooter .footer-info .footer-info-heading{\n  color:#2585f8 ;\n}\n\n.homepage-video-section .video-box .video-body .video-thumbnail-box .Video-content-box-with-text .video-content-inner .sub-heading{\n  color:#2585f8 !important;\n}\n .buttonLink > a{\n  color:#2585f8 !important;\n}\n.homepage-video-section .video-box .video-body .video-thumbnail-box .Video-content-box-with-text .video-content-inner{\n  text-align:center;\n}\n\n.footer{\n  background-color: black;\n}\n\n.nichefooter .footer-info .footer-info-col .footer-info-list a{\n  color:white;\n}\n.nichefooter .contactdeatils p a{\n  color:white;\n}\n.nichefooter .contactdeatils p{\n  color:white;\n}\n.nichefooter .logobox address{\n  color:white;\n}\n\n"
+  }}
+/>
+
+
+
+
+
+
+
+
+
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
