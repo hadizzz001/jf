@@ -16,6 +16,7 @@ export default function Home() {
         <div data-content-region="home_below_menu" />
         <section
           className="heroCarousel"
+          style={{marginTop: "5em"}}
           data-slick='{
     "arrows": true,
     "mobileFirst": true,
@@ -29,7 +30,7 @@ export default function Home() {
       }'
         >
           <a
-            href="products/index.html"
+            href="/machines?filter=Shawarma Machines"
             data-hero-slide={0}
             aria-label="Shawarma Machines"
           >
@@ -50,7 +51,7 @@ export default function Home() {
             </div>
           </a>
           <a
-            href="shawarma-machines/index.html"
+            href="/machines?filter=Shawarma Knife & Meat Slicers"
             data-hero-slide={1}
             aria-label="Commercial Sharawma Machines"
           >
@@ -73,7 +74,7 @@ export default function Home() {
             </div>
           </a>
           <a
-            href="pita-ovens/index.html"
+            href="/machines?filter=Pita%20Oven"
             data-hero-slide={2}
             aria-label="Dough Mixer and Pita Ovens"
           >
@@ -212,7 +213,7 @@ export default function Home() {
                         }}
                       />
                       <div>
-                        <a href="shawarma-machines/index.html" role="button">
+                        <a href="/machines?filter=Shawarma Machines" role="button">
                           <div
                             id="sd-image-c7596a98-4b75-464b-a2f0-9ee39e0a5e0c"
                             data-edit-mode=""
@@ -239,7 +240,7 @@ export default function Home() {
                       <div className="sd-button-8aaaf1f7-5d4f-457c-a885-5a16723bc9b4">
                         <div className="buttonLink" role="button">
                           <a
-                            href="shawarma-machines/index.html"
+                            href="/machines?filter=Shawarma Machines"
                             target="_top"
                             id="sd-simple-button-editable-8aaaf1f7-5d4f-457c-a885-5a16723bc9b4"
                             data-edit-mode=""
@@ -270,7 +271,7 @@ export default function Home() {
                         }}
                       />
                       <div>
-                        <a href="shawarma-knife/index.html" role="button">
+                        <a href="http://localhost:3000/machines?filter=Shawarma%20Knife%20%26%20Meat%20Slicers" role="button">
                           <div
                             id="sd-image-2d99ab48-9863-4316-96ae-e66b57aa7b3b"
                             data-edit-mode=""
@@ -297,7 +298,7 @@ export default function Home() {
                       <div className="sd-button-b9feaf63-75fa-4399-b284-233275061c83">
                         <div className="buttonLink" role="button">
                           <a
-                            href="shawarma-knife/index.html"
+                            href="http://localhost:3000/machines?filter=Shawarma%20Knife%20%26%20Meat%20Slicers"
                             target="_top"
                             id="sd-simple-button-editable-b9feaf63-75fa-4399-b284-233275061c83"
                             data-edit-mode=""
@@ -328,7 +329,7 @@ export default function Home() {
                         }}
                       />
                       <div>
-                        <a href="pita-ovens/index.html" role="button">
+                        <a href="/machines?filter=Pita%20Oven" role="button">
                           <div
                             id="sd-image-3dea85bc-542c-4254-8346-2b8cab99bd6d"
                             data-edit-mode=""
@@ -355,7 +356,7 @@ export default function Home() {
                       <div className="sd-button-f4d15c21-1ac3-4820-ad3c-2331d656bf35">
                         <div className="buttonLink" role="button">
                           <a
-                            href="pita-ovens/index.html"
+                            href="/machines?filter=Pita%20Oven"
                             target="_top"
                             id="sd-simple-button-editable-f4d15c21-1ac3-4820-ad3c-2331d656bf35"
                             data-edit-mode=""
@@ -386,7 +387,7 @@ export default function Home() {
                         }}
                       />
                       <div>
-                        <a href="hummus-blender/index.html" role="button">
+                        <a href="/machines?filter=Hummus%20Blender" role="button">
                           <div
                             id="sd-image-19858769-2524-4e35-9a47-0eb1249b8744"
                             data-edit-mode=""
@@ -413,7 +414,7 @@ export default function Home() {
                       <div className="sd-button-322f8c55-520d-4c86-99db-440b10491407">
                         <div className="buttonLink" role="button">
                           <a
-                            href="hummus-blender/index.html"
+                            href="/machines?filter=Hummus%20Blender"
                             target="_top"
                             id="sd-simple-button-editable-322f8c55-520d-4c86-99db-440b10491407"
                             data-edit-mode=""
@@ -444,7 +445,7 @@ export default function Home() {
                         }}
                       />
                       <div>
-                        <a href="saj-machine/index.html" role="button">
+                        <a href="/machines?filter=Saj%20Machine" role="button">
                           <div
                             id="sd-image-6fd233be-70a8-42d7-9195-8b55e0b1ef9b"
                             data-edit-mode=""
@@ -471,7 +472,7 @@ export default function Home() {
                       <div className="sd-button-a7df50c2-d7f8-4188-bbe1-c2661a15e9c7">
                         <div className="buttonLink" role="button">
                           <a
-                            href="saj-machine/index.html"
+                            href="/machines?filter=Saj%20Machine"
                             target="_top"
                             id="sd-simple-button-editable-a7df50c2-d7f8-4188-bbe1-c2661a15e9c7"
                             data-edit-mode=""
@@ -503,7 +504,7 @@ export default function Home() {
                       />
                       <div>
                         <a
-                          href="kebab-char-broilers-griddles/index.html"
+                          href="/machines?filter=Kebab%20Char%20Broilers%20%26%20Griddles"
                           role="button"
                         >
                           <div
@@ -532,7 +533,7 @@ export default function Home() {
                       <div className="sd-button-2ef561a9-f1d0-4dca-986d-4fad366f9758">
                         <div className="buttonLink" role="button">
                           <a
-                            href="kebab-char-broilers-griddles/index.html"
+                            href="/machines?filter=Kebab%20Char%20Broilers%20%26%20Griddles"
                             target="_top"
                             id="sd-simple-button-editable-2ef561a9-f1d0-4dca-986d-4fad366f9758"
                             data-edit-mode=""
@@ -575,7 +576,7 @@ export default function Home() {
                         }}
                       />
                       <div>
-                        <a href="falafel-meat-grinder/index.html" role="button">
+                        <a href="/machines?filter=Falafel%20%26%20Meat%20Grinder" role="button">
                           <div
                             id="sd-image-b9ee53ed-369c-4c37-a45b-f310d18e9de1"
                             data-edit-mode=""
@@ -602,7 +603,7 @@ export default function Home() {
                       <div className="sd-button-e8ef67ac-7f3c-4370-8e77-39b8f5c90de6">
                         <div className="buttonLink" role="button">
                           <a
-                            href="falafel-meat-grinder/index.html"
+                            href="/machines?filter=Falafel%20%26%20Meat%20Grinder"
                             target="_top"
                             id="sd-simple-button-editable-e8ef67ac-7f3c-4370-8e77-39b8f5c90de6"
                             data-edit-mode=""
@@ -633,7 +634,7 @@ export default function Home() {
                         }}
                       />
                       <div>
-                        <a href="dough-mixers/index.html" role="button">
+                        <a href="/machines?filter=Dough%20Mixers%20%26%20Rollers" role="button">
                           <div
                             id="sd-image-b6c2754d-807a-42b6-9303-6c110567c902"
                             data-edit-mode=""
@@ -660,7 +661,7 @@ export default function Home() {
                       <div className="sd-button-79397375-83af-492c-afb7-bb671eb1c15a">
                         <div className="buttonLink" role="button">
                           <a
-                            href="dough-mixers/index.html"
+                            href="/machines?filter=Dough%20Mixers%20%26%20Rollers"
                             target="_top"
                             id="sd-simple-button-editable-79397375-83af-492c-afb7-bb671eb1c15a"
                             data-edit-mode=""
@@ -692,7 +693,7 @@ export default function Home() {
                       />
                       <div>
                         <a
-                          href="automatic-salad-bar-chopper/index.html"
+                          href="/machines?filter=Automatic%20Salad%20Bar%20Chopper"
                           role="button"
                         >
                           <div
@@ -721,7 +722,7 @@ export default function Home() {
                       <div className="sd-button-4a605474-7063-47a2-b444-d5ba350b045a">
                         <div className="buttonLink" role="button">
                           <a
-                            href="automatic-salad-bar-chopper/index.html"
+                            href="/machines?filter=Automatic%20Salad%20Bar%20Chopper"
                             target="_top"
                             id="sd-simple-button-editable-4a605474-7063-47a2-b444-d5ba350b045a"
                             data-edit-mode=""
@@ -752,7 +753,7 @@ export default function Home() {
                         }}
                       />
                       <div>
-                        <a href="gas-ranges/index.html" role="button">
+                        <a href="/machines?filter=Gas%20Ranges" role="button">
                           <div
                             id="sd-image-41d301cc-eedd-4e45-9fd1-1f519aa196db"
                             data-edit-mode=""
@@ -779,7 +780,7 @@ export default function Home() {
                       <div className="sd-button-d5b1176a-172e-4e4c-877d-2cf6605c566d">
                         <div className="buttonLink" role="button">
                           <a
-                            href="gas-ranges/index.html"
+                            href="/machines?filter=Gas%20Ranges"
                             target="_top"
                             id="sd-simple-button-editable-d5b1176a-172e-4e4c-877d-2cf6605c566d"
                             data-edit-mode=""
@@ -811,7 +812,7 @@ export default function Home() {
                       />
                       <div>
                         <a
-                          href="salad-bar-refrigeration-food-warmers/index.html"
+                          href="/machines?filter=Salad%20Bar%20Refrigeration%20%26%20Food%20Warmers"
                           role="button"
                         >
                           <div
@@ -840,7 +841,7 @@ export default function Home() {
                       <div className="sd-button-73aa2e71-1df6-4ccc-8db6-2490eb9c7617">
                         <div className="buttonLink" role="button">
                           <a
-                            href="salad-bar-refrigeration-food-warmers/index.html"
+                            href="/machines?filter=Salad%20Bar%20Refrigeration%20%26%20Food%20Warmers"
                             target="_top"
                             id="sd-simple-button-editable-73aa2e71-1df6-4ccc-8db6-2490eb9c7617"
                             data-edit-mode=""
@@ -850,68 +851,7 @@ export default function Home() {
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div data-sub-layout="ae645d8c-851f-480d-93e9-b50555c6a009">
-                    <style
-                      data-column-styling="ae645d8c-851f-480d-93e9-b50555c6a009"
-                      dangerouslySetInnerHTML={{
-                        __html:
-                          '\n      [data-sub-layout="ae645d8c-851f-480d-93e9-b50555c6a009"] {\n        display: flex;\n        flex-direction: column;\n        box-sizing: border-box;\n        flex-basis: 16.66%;\n        max-width: 16.66%;\n        z-index: 0;\n        justify-content: flex-start;\n        padding-top: 20px;\n        padding-right: 20px;\n        padding-bottom: 20px;\n        padding-left: 20px;\n        position: relative;\n      }\n      [data-sub-layout="ae645d8c-851f-480d-93e9-b50555c6a009"]:after {\n        background-position: center center;\n        background-size: cover;\n        z-index: auto;\n        display: block;\n        position: absolute;\n        top: 0;\n        left: 0;\n        bottom: 0;\n        right: 0;\n      }\n      @media only screen and (max-width: 700px) {\n        [data-sub-layout="ae645d8c-851f-480d-93e9-b50555c6a009"] {\n          flex-basis: 100%;\n          max-width: 100%;\n        }\n      }\n    '
-                      }}
-                    />
-                    <div
-                      data-widget-id="3ad440ff-26cc-4d86-92d0-e2bf906f5453"
-                      data-placement-id="96d9654f-43f4-41d8-9f0f-45de2f9ffe92"
-                      data-placement-status="ACTIVE"
-                    >
-                      <style
-                        dangerouslySetInnerHTML={{
-                          __html:
-                            "\n    #sd-image-3ad440ff-26cc-4d86-92d0-e2bf906f5453 {\n        display: flex;\n        align-items: center;\n        background: url('https://cdn11.bigcommerce.com/s-1g6otlwo/images/stencil/original/q/falafel-%26-meat-grinder__65571.original.jpg') no-repeat;\n        opacity: calc(100 / 100);\n\n            cursor: pointer;\n\n            background-size: contain;\n\n            height: auto;\n\n        background-position:\n                center\n                center\n;\n\n\n        padding-top: 0px;\n        padding-right: 0px;\n        padding-bottom: 0px;\n        padding-left: 0px;\n\n        margin-top: 0px;\n        margin-right: 0px;\n        margin-bottom: 0px;\n        margin-left: 0px;\n    }\n\n    #sd-image-3ad440ff-26cc-4d86-92d0-e2bf906f5453 * {\n        margin: 0px;\n    }\n\n    #sd-image-3ad440ff-26cc-4d86-92d0-e2bf906f5453 img {\n        width: auto;\n        opacity: 0;\n\n            height: auto;\n    }\n\n    @media only screen and (max-width: 700px) {\n        #sd-image-3ad440ff-26cc-4d86-92d0-e2bf906f5453 {\n        }\n    }\n"
-                        }}
-                      />
-                      <div>
-                        <a
-                          href="autofalafel-full-automatic-falafel-machine-by-spinning-grillers/index.html"
-                          role="button"
-                        >
-                          <div
-                            id="sd-image-3ad440ff-26cc-4d86-92d0-e2bf906f5453"
-                            data-edit-mode=""
-                          >
-                            <img
-                              src="https://cdn11.bigcommerce.com/s-1g6otlwo/images/stencil/original/q/falafel-%26-meat-grinder__65571.original.jpg"
-                              alt="Kebab Char Broilers & Griddles"
-                            />
-                          </div>
-                        </a>
-                      </div>
-                    </div>
-                    <div
-                      data-widget-id="35a70489-4a15-4c09-93a9-a242f6a6adcf"
-                      data-placement-id="b769a2ba-9c07-427d-89a5-c902807585a6"
-                      data-placement-status="ACTIVE"
-                    >
-                      <style
-                        dangerouslySetInnerHTML={{
-                          __html:
-                            '\n    .sd-button-35a70489-4a15-4c09-93a9-a242f6a6adcf {\n        display: flex;\n        align-items: center;\n            justify-content: center;\n    }\n\n    .sd-button-35a70489-4a15-4c09-93a9-a242f6a6adcf .buttonLink > a {\n        text-decoration: none;\n        background-color: rgba(0,0,0,0);\n        border: 0px solid rgba(0,0,0,0);\n        border-radius: 0px;\n        color: rgba(212,104,0,1);\n        font-size: 18px;\n        font-family: inherit;\n        font-weight: 400;\n        padding-top: 0px;\n        padding-right: 0px;\n        padding-bottom: 0px;\n        padding-left: 0px;\n        margin-top: 10px;\n        margin-right: 0px;\n        margin-bottom: 0px;\n        margin-left: 0px;\n        text-align: center;\n        cursor: pointer;\n    }\n\n    .sd-button-35a70489-4a15-4c09-93a9-a242f6a6adcf .buttonLink > a:hover {\n        background-color: rgba(0,0,0,0);\n        border-color: rgba(0,0,0,0);\n        color: rgba(0,0,0,1);\n    }\n\n    @media only screen and (max-width: 700px) {\n        .sd-button-35a70489-4a15-4c09-93a9-a242f6a6adcf { }\n    }\n\n    #sd-simple-button-editable-35a70489-4a15-4c09-93a9-a242f6a6adcf {\n        min-width: 14px;\n        line-height: 1.5;\n        display: inline-block;\n    }\n\n    #sd-simple-button-editable-35a70489-4a15-4c09-93a9-a242f6a6adcf * {\n        margin: 0;\n        padding: 0;\n    }\n\n    #sd-simple-button-editable-35a70489-4a15-4c09-93a9-a242f6a6adcf[data-edit-mode="true"]:hover,\n    #sd-simple-button-editable-35a70489-4a15-4c09-93a9-a242f6a6adcf[data-edit-mode="true"]:active,\n    #sd-simple-button-editable-35a70489-4a15-4c09-93a9-a242f6a6adcf[data-edit-mode="true"]:focus {\n        outline: 1px dashed #3C64F4;\n    }\n\n    #sd-simple-button-editable-35a70489-4a15-4c09-93a9-a242f6a6adcf strong,\n    #sd-simple-button-editable-35a70489-4a15-4c09-93a9-a242f6a6adcf strong * {\n        font-weight: bold;\n    }\n'
-                        }}
-                      />
-                      <div className="sd-button-35a70489-4a15-4c09-93a9-a242f6a6adcf">
-                        <div className="buttonLink" role="button">
-                          <a
-                            href="autofalafel-full-automatic-falafel-machine-by-spinning-grillers/index.html"
-                            target="_top"
-                            id="sd-simple-button-editable-35a70489-4a15-4c09-93a9-a242f6a6adcf"
-                            data-edit-mode=""
-                          >
-                            Falafel Machine
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  </div> 
                 </div>
                 <div
                   data-sub-layout-container="c8ab5029-fd16-4422-bab5-d356963af409"
@@ -944,7 +884,7 @@ export default function Home() {
                         }}
                       />
                       <div>
-                        <a href="kunafet/index.html" role="button">
+                        <a href="/machines?filter=Kunafet" role="button">
                           <div
                             id="sd-image-7d630631-1339-4a60-bcdd-d366c1259601"
                             data-edit-mode=""
@@ -971,7 +911,7 @@ export default function Home() {
                       <div className="sd-button-128841ae-b1c8-4f13-82b3-849d3624ed68">
                         <div className="buttonLink" role="button">
                           <a
-                            href="kunafet/index.html"
+                            href="/machines?filter=Kunafet"
                             target="_top"
                             id="sd-simple-button-editable-128841ae-b1c8-4f13-82b3-849d3624ed68"
                             data-edit-mode=""
@@ -1003,7 +943,7 @@ export default function Home() {
                       />
                       <div>
                         <a
-                          href="gelato-middle-eastern-booza/index.html"
+                          href="/machines?filter=Gelato%20%26%20Middle%20Eastern%20Booza"
                           role="button"
                         >
                           <div
@@ -1032,7 +972,7 @@ export default function Home() {
                       <div className="sd-button-705ce4ca-b8fe-4b1b-83f8-1923bcfebdaa">
                         <div className="buttonLink" role="button">
                           <a
-                            href="gelato-middle-eastern-booza/index.html"
+                            href="/machines?filter=Gelato%20%26%20Middle%20Eastern%20Booza"
                             target="_top"
                             id="sd-simple-button-editable-705ce4ca-b8fe-4b1b-83f8-1923bcfebdaa"
                             data-edit-mode=""
@@ -1063,7 +1003,7 @@ export default function Home() {
                         }}
                       />
                       <div>
-                        <a href="coffee-espresso-machines/index.html" role="button">
+                        <a href="/machines?filter=Coffee%20%26%20Espresso%20Machines" role="button">
                           <div
                             id="sd-image-633e6dfa-6430-4ad1-a8e6-ebe6e33f5589"
                             data-edit-mode=""
@@ -1090,7 +1030,7 @@ export default function Home() {
                       <div className="sd-button-4d40ef53-58c3-4055-ac41-5be15790db01">
                         <div className="buttonLink" role="button">
                           <a
-                            href="coffee-espresso-machines/index.html"
+                            href="/machines?filter=Coffee%20%26%20Espresso%20Machines"
                             target="_top"
                             id="sd-simple-button-editable-4d40ef53-58c3-4055-ac41-5be15790db01"
                             data-edit-mode=""
@@ -1100,65 +1040,7 @@ export default function Home() {
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div data-sub-layout="48046d8e-5e63-4022-b30a-d2cc1ab7e5a0">
-                    <style
-                      data-column-styling="48046d8e-5e63-4022-b30a-d2cc1ab7e5a0"
-                      dangerouslySetInnerHTML={{
-                        __html:
-                          '\n      [data-sub-layout="48046d8e-5e63-4022-b30a-d2cc1ab7e5a0"] {\n        display: flex;\n        flex-direction: column;\n        box-sizing: border-box;\n        flex-basis: 16.66%;\n        max-width: 16.66%;\n        z-index: 0;\n        justify-content: flex-start;\n        padding-top: 20px;\n        padding-right: 20px;\n        padding-bottom: 20px;\n        padding-left: 20px;\n        position: relative;\n      }\n      [data-sub-layout="48046d8e-5e63-4022-b30a-d2cc1ab7e5a0"]:after {\n        background-position: center center;\n        background-size: cover;\n        z-index: auto;\n        display: block;\n        position: absolute;\n        top: 0;\n        left: 0;\n        bottom: 0;\n        right: 0;\n      }\n      @media only screen and (max-width: 700px) {\n        [data-sub-layout="48046d8e-5e63-4022-b30a-d2cc1ab7e5a0"] {\n          flex-basis: 100%;\n          max-width: 100%;\n        }\n      }\n    '
-                      }}
-                    />
-                    <div
-                      data-widget-id="bb82eec5-d68c-4f32-856e-49846ddc23c5"
-                      data-placement-id="7c61a533-688c-4e24-9c48-ddd701f4849b"
-                      data-placement-status="ACTIVE"
-                    >
-                      <style
-                        dangerouslySetInnerHTML={{
-                          __html:
-                            "\n    #sd-image-bb82eec5-d68c-4f32-856e-49846ddc23c5 {\n        display: flex;\n        align-items: center;\n        background: url('https://cdn11.bigcommerce.com/s-1g6otlwo/images/stencil/original/image-manager/spare-parts.jpg') no-repeat;\n        opacity: calc(100 / 100);\n\n            cursor: pointer;\n\n            background-size: contain;\n\n            height: auto;\n\n        background-position:\n                center\n                center\n;\n\n\n        padding-top: 0px;\n        padding-right: 0px;\n        padding-bottom: 0px;\n        padding-left: 0px;\n\n        margin-top: 0px;\n        margin-right: 0px;\n        margin-bottom: 0px;\n        margin-left: 0px;\n    }\n\n    #sd-image-bb82eec5-d68c-4f32-856e-49846ddc23c5 * {\n        margin: 0px;\n    }\n\n    #sd-image-bb82eec5-d68c-4f32-856e-49846ddc23c5 img {\n        width: auto;\n        opacity: 0;\n\n            height: auto;\n    }\n\n    @media only screen and (max-width: 700px) {\n        #sd-image-bb82eec5-d68c-4f32-856e-49846ddc23c5 {\n        }\n    }\n"
-                        }}
-                      />
-                      <div>
-                        <a href="spare-parts/index.html" role="button">
-                          <div
-                            id="sd-image-bb82eec5-d68c-4f32-856e-49846ddc23c5"
-                            data-edit-mode=""
-                          >
-                            <img
-                              src="https://cdn11.bigcommerce.com/s-1g6otlwo/images/stencil/original/image-manager/spare-parts.jpg"
-                              alt="Hummus Blender"
-                            />
-                          </div>
-                        </a>
-                      </div>
-                    </div>
-                    <div
-                      data-widget-id="b166314f-363b-43fc-8f87-94d21cd3d7aa"
-                      data-placement-id="3f9a29cc-eded-40bb-8628-8c1b87c1aa3e"
-                      data-placement-status="ACTIVE"
-                    >
-                      <style
-                        dangerouslySetInnerHTML={{
-                          __html:
-                            '\n    .sd-button-b166314f-363b-43fc-8f87-94d21cd3d7aa {\n        display: flex;\n        align-items: center;\n            justify-content: center;\n    }\n\n    .sd-button-b166314f-363b-43fc-8f87-94d21cd3d7aa .buttonLink > a {\n        text-decoration: none;\n        background-color: rgba(0,0,0,0);\n        border: 0px solid rgba(0,0,0,0);\n        border-radius: 0px;\n        color: rgba(212,104,0,1);\n        font-size: 18px;\n        font-family: inherit;\n        font-weight: 400;\n        padding-top: 0px;\n        padding-right: 0px;\n        padding-bottom: 0px;\n        padding-left: 0px;\n        margin-top: 10px;\n        margin-right: 0px;\n        margin-bottom: 0px;\n        margin-left: 0px;\n        text-align: center;\n        cursor: pointer;\n    }\n\n    .sd-button-b166314f-363b-43fc-8f87-94d21cd3d7aa .buttonLink > a:hover {\n        background-color: rgba(0,0,0,0);\n        border-color: rgba(0,0,0,0);\n        color: rgba(0,0,0,1);\n    }\n\n    @media only screen and (max-width: 700px) {\n        .sd-button-b166314f-363b-43fc-8f87-94d21cd3d7aa { }\n    }\n\n    #sd-simple-button-editable-b166314f-363b-43fc-8f87-94d21cd3d7aa {\n        min-width: 14px;\n        line-height: 1.5;\n        display: inline-block;\n    }\n\n    #sd-simple-button-editable-b166314f-363b-43fc-8f87-94d21cd3d7aa * {\n        margin: 0;\n        padding: 0;\n    }\n\n    #sd-simple-button-editable-b166314f-363b-43fc-8f87-94d21cd3d7aa[data-edit-mode="true"]:hover,\n    #sd-simple-button-editable-b166314f-363b-43fc-8f87-94d21cd3d7aa[data-edit-mode="true"]:active,\n    #sd-simple-button-editable-b166314f-363b-43fc-8f87-94d21cd3d7aa[data-edit-mode="true"]:focus {\n        outline: 1px dashed #3C64F4;\n    }\n\n    #sd-simple-button-editable-b166314f-363b-43fc-8f87-94d21cd3d7aa strong,\n    #sd-simple-button-editable-b166314f-363b-43fc-8f87-94d21cd3d7aa strong * {\n        font-weight: bold;\n    }\n'
-                        }}
-                      />
-                      <div className="sd-button-b166314f-363b-43fc-8f87-94d21cd3d7aa">
-                        <div className="buttonLink" role="button">
-                          <a
-                            href="spare-parts/index.html"
-                            target="_top"
-                            id="sd-simple-button-editable-b166314f-363b-43fc-8f87-94d21cd3d7aa"
-                            data-edit-mode=""
-                          >
-                            Spare Parts
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  </div> 
                   <div data-sub-layout="346a3ff0-eb7a-440f-b904-dac71fbf0f82">
                     <style
                       data-column-styling="346a3ff0-eb7a-440f-b904-dac71fbf0f82"
@@ -1179,7 +1061,7 @@ export default function Home() {
                         }}
                       />
                       <div>
-                        <a href="accessories.html" role="button">
+                        <a href="machines?filter=Accessories" role="button">
                           <div
                             id="sd-image-6b3f837c-525c-401d-9ab7-eb196b0b55fc"
                             data-edit-mode=""
@@ -1206,7 +1088,7 @@ export default function Home() {
                       <div className="sd-button-463e05f7-29db-48e3-b28a-1c1daf73caba">
                         <div className="buttonLink" role="button">
                           <a
-                            href="accessories.html"
+                            href="machines?filter=Accessories"
                             target="_top"
                             id="sd-simple-button-editable-463e05f7-29db-48e3-b28a-1c1daf73caba"
                             data-edit-mode=""
@@ -1237,7 +1119,7 @@ export default function Home() {
                         }}
                       />
                       <div>
-                        <a href="shawarma-meat-slicer/index.html" role="button">
+                        <a href="/machines?filter=Shawarma%20Meat%20Slicer" role="button">
                           <div
                             id="sd-image-0e14179a-640a-483f-982d-e7148634425d"
                             data-edit-mode=""
@@ -1264,7 +1146,7 @@ export default function Home() {
                       <div className="sd-button-ba07432b-0908-49bd-af54-4802aa3c86a1">
                         <div className="buttonLink" role="button">
                           <a
-                            href="shawarma-meat-slicer/index.html"
+                            href="/machines?filter=Shawarma%20Meat%20Slicer"
                             target="_top"
                             id="sd-simple-button-editable-ba07432b-0908-49bd-af54-4802aa3c86a1"
                             data-edit-mode=""
@@ -1307,7 +1189,7 @@ export default function Home() {
                         }}
                       />
                       <div>
-                        <a href="rotisserie-chicken/index.html" role="button">
+                        <a href="/machines?filter=Rotisserie%20Chicken" role="button">
                           <div
                             id="sd-image-76adc5ee-d5f8-496d-89dd-66c3c622cd49"
                             data-edit-mode=""
@@ -1334,7 +1216,7 @@ export default function Home() {
                       <div className="sd-button-88c85c48-d4cc-4277-b61a-db929ccfc529">
                         <div className="buttonLink" role="button">
                           <a
-                            href="rotisserie-chicken/index.html"
+                            href="/machines?filter=Rotisserie%20Chicken"
                             target="_top"
                             id="sd-simple-button-editable-88c85c48-d4cc-4277-b61a-db929ccfc529"
                             data-edit-mode=""
@@ -1365,7 +1247,7 @@ export default function Home() {
                         }}
                       />
                       <div>
-                        <a href="fryers/index.html" role="button">
+                        <a href="/machines?filter=Fryers" role="button">
                           <div
                             id="sd-image-3a29f738-430b-4f9c-b0b3-5ae785d9b0a3"
                             data-edit-mode=""
@@ -1392,7 +1274,7 @@ export default function Home() {
                       <div className="sd-button-54a81285-97e5-43d5-8a91-f0538965dc3f">
                         <div className="buttonLink" role="button">
                           <a
-                            href="fryers/index.html"
+                            href="/machines?filter=Fryers"
                             target="_top"
                             id="sd-simple-button-editable-54a81285-97e5-43d5-8a91-f0538965dc3f"
                             data-edit-mode=""
@@ -1424,7 +1306,7 @@ export default function Home() {
                       />
                       <div>
                         <a
-                          href="automatic-kebab-encrusted/index.html"
+                          href="/machines?filter=Automatic%20Kebab%20Encrusted"
                           role="button"
                         >
                           <div
@@ -1453,7 +1335,7 @@ export default function Home() {
                       <div className="sd-button-7fbe9474-47e6-45d5-8c44-b01d987897b8">
                         <div className="buttonLink" role="button">
                           <a
-                            href="automatic-kebab-encrusted/index.html"
+                            href="/machines?filter=Automatic%20Kebab%20Encrusted"
                             target="_top"
                             id="sd-simple-button-editable-7fbe9474-47e6-45d5-8c44-b01d987897b8"
                             data-edit-mode=""
@@ -1464,65 +1346,7 @@ export default function Home() {
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div data-sub-layout="5d90ee41-0ef3-436b-a82e-d77cdd0f38f7">
-                    <style
-                      data-column-styling="5d90ee41-0ef3-436b-a82e-d77cdd0f38f7"
-                      dangerouslySetInnerHTML={{
-                        __html:
-                          '\n      [data-sub-layout="5d90ee41-0ef3-436b-a82e-d77cdd0f38f7"] {\n        display: flex;\n        flex-direction: column;\n        box-sizing: border-box;\n        flex-basis: 16.66%;\n        max-width: 16.66%;\n        z-index: 0;\n        justify-content: center;\n        padding-top: 20px;\n        padding-right: 20px;\n        padding-bottom: 20px;\n        padding-left: 20px;\n        position: relative;\n      }\n      [data-sub-layout="5d90ee41-0ef3-436b-a82e-d77cdd0f38f7"]:after {\n        background-position: center center;\n        background-size: cover;\n        z-index: auto;\n        display: block;\n        position: absolute;\n        top: 0;\n        left: 0;\n        bottom: 0;\n        right: 0;\n      }\n      @media only screen and (max-width: 700px) {\n        [data-sub-layout="5d90ee41-0ef3-436b-a82e-d77cdd0f38f7"] {\n          flex-basis: 100%;\n          max-width: 100%;\n        }\n      }\n    '
-                      }}
-                    />
-                    <div
-                      data-widget-id="eea86530-d1e1-4b06-b35d-e20869be88d7"
-                      data-placement-id="bf2d96a6-edea-4eb6-9eca-c69ec97f2026"
-                      data-placement-status="ACTIVE"
-                    >
-                      <style
-                        dangerouslySetInnerHTML={{
-                          __html:
-                            "\n    #sd-image-eea86530-d1e1-4b06-b35d-e20869be88d7 {\n        display: flex;\n        align-items: center;\n        background: url('https://cdn11.bigcommerce.com/s-1g6otlwo/images/stencil/original/image-manager/sg-cat-icon.png?t=1701687855') no-repeat;\n        opacity: calc(100 / 100);\n\n            cursor: pointer;\n\n            background-size: contain;\n\n            height: auto;\n\n        background-position:\n                center\n                center\n;\n\n\n        padding-top: 0px;\n        padding-right: 0px;\n        padding-bottom: 0px;\n        padding-left: 0px;\n\n        margin-top: 0px;\n        margin-right: 0px;\n        margin-bottom: 0px;\n        margin-left: 0px;\n    }\n\n    #sd-image-eea86530-d1e1-4b06-b35d-e20869be88d7 * {\n        margin: 0px;\n    }\n\n    #sd-image-eea86530-d1e1-4b06-b35d-e20869be88d7 img {\n        width: auto;\n        opacity: 0;\n\n            height: auto;\n    }\n\n    @media only screen and (max-width: 700px) {\n        #sd-image-eea86530-d1e1-4b06-b35d-e20869be88d7 {\n        }\n    }\n"
-                        }}
-                      />
-                      <div>
-                        <a href="dents-scratches/index.html" role="button">
-                          <div
-                            id="sd-image-eea86530-d1e1-4b06-b35d-e20869be88d7"
-                            data-edit-mode=""
-                          >
-                            <img
-                              src="https://cdn11.bigcommerce.com/s-1g6otlwo/images/stencil/original/image-manager/sg-cat-icon.png?t=1701687855"
-                              alt="Kebab Char Broilers & Griddles"
-                            />
-                          </div>
-                        </a>
-                      </div>
-                    </div>
-                    <div
-                      data-widget-id="e7f5a81f-acbf-440d-b2a2-bbc0273213c9"
-                      data-placement-id="c2915f43-35bc-477d-8c28-5c50c12def33"
-                      data-placement-status="ACTIVE"
-                    >
-                      <style
-                        dangerouslySetInnerHTML={{
-                          __html:
-                            '\n    .sd-button-e7f5a81f-acbf-440d-b2a2-bbc0273213c9 {\n        display: flex;\n        align-items: center;\n            justify-content: center;\n    }\n\n    .sd-button-e7f5a81f-acbf-440d-b2a2-bbc0273213c9 .buttonLink > a {\n        text-decoration: none;\n        background-color: rgba(0,0,0,0);\n        border: 0px solid rgba(0,0,0,0);\n        border-radius: 0px;\n        color: rgba(212,104,0,1);\n        font-size: 18px;\n        font-family: inherit;\n        font-weight: 400;\n        padding-top: 0px;\n        padding-right: 0px;\n        padding-bottom: 0px;\n        padding-left: 0px;\n        margin-top: 10px;\n        margin-right: 0px;\n        margin-bottom: 0px;\n        margin-left: 0px;\n        text-align: center;\n        cursor: pointer;\n    }\n\n    .sd-button-e7f5a81f-acbf-440d-b2a2-bbc0273213c9 .buttonLink > a:hover {\n        background-color: rgba(0,0,0,0);\n        border-color: rgba(0,0,0,0);\n        color: rgba(0,0,0,1);\n    }\n\n    @media only screen and (max-width: 700px) {\n        .sd-button-e7f5a81f-acbf-440d-b2a2-bbc0273213c9 { }\n    }\n\n    #sd-simple-button-editable-e7f5a81f-acbf-440d-b2a2-bbc0273213c9 {\n        min-width: 14px;\n        line-height: 1.5;\n        display: inline-block;\n    }\n\n    #sd-simple-button-editable-e7f5a81f-acbf-440d-b2a2-bbc0273213c9 * {\n        margin: 0;\n        padding: 0;\n    }\n\n    #sd-simple-button-editable-e7f5a81f-acbf-440d-b2a2-bbc0273213c9[data-edit-mode="true"]:hover,\n    #sd-simple-button-editable-e7f5a81f-acbf-440d-b2a2-bbc0273213c9[data-edit-mode="true"]:active,\n    #sd-simple-button-editable-e7f5a81f-acbf-440d-b2a2-bbc0273213c9[data-edit-mode="true"]:focus {\n        outline: 1px dashed #3C64F4;\n    }\n\n    #sd-simple-button-editable-e7f5a81f-acbf-440d-b2a2-bbc0273213c9 strong,\n    #sd-simple-button-editable-e7f5a81f-acbf-440d-b2a2-bbc0273213c9 strong * {\n        font-weight: bold;\n    }\n'
-                        }}
-                      />
-                      <div className="sd-button-e7f5a81f-acbf-440d-b2a2-bbc0273213c9">
-                        <div className="buttonLink" role="button">
-                          <a
-                            href="dents-scratches/index.html"
-                            target="_top"
-                            id="sd-simple-button-editable-e7f5a81f-acbf-440d-b2a2-bbc0273213c9"
-                            data-edit-mode=""
-                          >
-                            Dents &amp; Scratches
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  </div> 
                   <div data-sub-layout="59b83dfd-8e13-45f7-8c61-66c599676616">
                     <style
                       data-column-styling="59b83dfd-8e13-45f7-8c61-66c599676616"

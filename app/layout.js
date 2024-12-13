@@ -45,7 +45,7 @@ export default function RootLayout({ children }) {
     name="keywords"
     content="shawarma machine, gyro machine, Jardali Food Machines, shawarma grill, doner kebab machine, Bread maker machine"
   />
-  <link rel="canonical" href="index.html" />
+  <link rel="canonical" href="/" />
   <meta name="platform" content="bigcommerce.stencil" />
   {/* BEGIN Preloading first images */}
   <link
@@ -62,7 +62,7 @@ export default function RootLayout({ children }) {
   />
   {/* END Preloading first images */}
   <link
-    href="https://cdn11.bigcommerce.com/s-1g6otlwo/product_images/sp-favicon%20%281%29.png?t=1679983327"
+    href="https://ucarecdn.com/f4020f98-be3d-4d27-b301-7df5bf18ee96/logo.png"
     rel="shortcut icon"
   />
   <meta
@@ -83,17 +83,7 @@ export default function RootLayout({ children }) {
     &lt;img height="1" width="1" style="display:none" alt="null"
     src="https://www.facebook.com/tr?id=5160896437326690&amp;ev=PageView&amp;noscript=1&amp;a=plbigcommerce1.2&amp;eid=store-1-prd-us-central1-190318915116"/&gt;
   </noscript>
-  {/* End Tracking Code for analytics_facebook */}
-  {/* Start Tracking Code for analytics_googleanalytics4 */}
-  {/* Global site tag (gtag.js) - Google Analytics */}
-  {/* End Tracking Code for analytics_googleanalytics4 */}
-  {/* Start Tracking Code for analytics_siteverification */}
-  <meta
-    name="google-site-verification"
-    content="1usF5OmZ8Efc8uP4kVOlChsvaObNr7EHvbjLvDwtoQo"
-  />
-  {/* End Tracking Code for analytics_siteverification */}
-  {/* Google tag (gtag.js) */}
+ 
 </>
 <style
   dangerouslySetInnerHTML={{
@@ -110,7 +100,31 @@ export default function RootLayout({ children }) {
 />
 
 
+<style
+  dangerouslySetInnerHTML={{
+    __html:
+      "\n  .header .mobileMenu-toggle .mobileMenu-toggleIcon:after, .header .mobileMenu-toggle .mobileMenu-toggleIcon:before{\n    background-color: #fff;\n  }\n\n  .header .mobileMenu-toggle .mobileMenu-toggleIcon:after, .header .mobileMenu-toggle .mobileMenu-toggleIcon:before{\n    background-color: #fff;\n  }\n\n  .header .mobileMenu-toggle .mobileMenu-toggleIcon{\n     background-color: #fff;\n  }\n"
+  }}
+/>
 
+
+
+ 
+      {/* WhatsApp Button */}
+      <a
+        href="https://wa.me/9613538266"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-4 right-4"
+        aria-label="Contact us on WhatsApp"
+        style={{zIndex: 100}}
+      >
+        <img
+          src="https://ucarecdn.com/a0f7f57f-b932-4d7b-b6a7-38b622616942/whatsappsvgrepocom1.png"
+          alt="WhatsApp"
+          className="w-10 h-10  hover:scale-110 transition-transform duration-300"
+        />
+      </a>
 
 
 
