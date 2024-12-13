@@ -1,6 +1,6 @@
 "use client";
 
-import { fetchTemp, fetchTemp2 } from './../utils';
+import { fetchTemp } from './../utils';
 import { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from 'next/navigation';
 import Head from '../component/Head';
@@ -42,7 +42,15 @@ const categories = {
   ]
 };
 
-const Dashboard = () => {
+
+
+// Extracts the filter parameter from the URL
+const FilterParams = () => {
+  const searchParams = useSearchParams();
+  return searchParams.get('filter');
+};
+
+const DashboardContent = ({ filter }) => {
   const [allTemp, setTemp] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredData, setFilteredData] = useState([]);
@@ -50,8 +58,6 @@ const Dashboard = () => {
   const [loading, setLoading] = useState(false);
 
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const filter = searchParams.get('filter');
 
   const fetchData = async () => {
     setLoading(true);
@@ -67,7 +73,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     if (filter) {
-      setFilteredData(allTemp.filter(item => item.type.includes(filter)));
+      setFilteredData(allTemp.filter((item) => item.type.includes(filter)));
     } else {
       setFilteredData(allTemp);
     }
@@ -77,10 +83,14 @@ const Dashboard = () => {
     if (e.key === "Enter") {
       const query = searchQuery.toLowerCase().trim();
       if (query) {
-        const filtered = allTemp.filter(item => item.title.toLowerCase().includes(query) || item.type.toLowerCase().includes(query));
+        const filtered = allTemp.filter(
+          (item) =>
+            item.title.toLowerCase().includes(query) ||
+            item.type.toLowerCase().includes(query)
+        );
         setFilteredData(filtered);
       } else {
-        setFilteredData(allTemp); // If search query is empty, show all data
+        setFilteredData(allTemp);
       }
     }
   };
@@ -92,9 +102,10 @@ const Dashboard = () => {
     }));
   };
 
+  console.log("allTemp: ", allTemp);
+
   return (
     <>
-      <Head />
       <header className="p-4 flex justify-center items-center mt-[100px]">
         <input
           type="text"
@@ -109,7 +120,6 @@ const Dashboard = () => {
       <div className="flex flex-wrap md:flex-nowrap mt-4">
         {/* Filter Section */}
         <aside className="w-full md:w-1/4 p-2 md:p-4 bg-gray-100">
-        
           {Object.keys(categories).map((category) => (
             <div key={category} className="m-0">
               <div
@@ -154,7 +164,11 @@ const Dashboard = () => {
                   <div key={index} className="p-4 border rounded-lg shadow-md hover:shadow-lg transition">
                     <h2 className="font-semibold text-lg text-[#2585f8]">{item.title || `Item ${index + 1}`}</h2>
                     {item.img && (
-                      <img src={item.img[0]} alt={item.title} className="w-full h-48 object-cover mb-4" />
+                      <img
+                        src={item.img[0]}
+                        alt={item.title}
+                        className="w-full h-48 object-cover mb-4"
+                      />
                     )}
                     <p className="text-gray-600">{item.type || "No type available."}</p>
                     <a href={`/product?id=${item.id}`} className="text-black hover:text-[#2585f8] transition">
@@ -169,7 +183,17 @@ const Dashboard = () => {
           )}
         </main>
       </div>
+    </>
+  );
+};
 
+const Dashboard = () => {
+  const filter = FilterParams();
+
+  return (
+    <>
+      <Head />
+      <DashboardContent filter={filter} />
       <Footer />
     </>
   );

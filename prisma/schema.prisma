@@ -11,13 +11,12 @@ datasource db {
 }
 
 model Post {
-  id String @id @default(auto()) @map("_id") @db.ObjectId
-  title String
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  title       String
   description String
-  img String[] 
-  category String
-  type String
+  img         String[]
+  category    String
+  type        String
+  price       String
+  stock       String
 }
-
-
- 
