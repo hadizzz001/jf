@@ -20,4 +20,23 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
- 
+a { 
+  text-decoration: none !important;
+}
+
+@media (max-width: 768px) { /* Adjust max-width for your breakpoint */
+  a {
+    color: white !important;
+    text-decoration: none !important;
+  }
+  #specbtn{
+    margin-left: 0px !important;
+    margin-top: 1em;
+  }
+}
+
+
+
+h1, h2, h3, h4, h5, h6 {
+  color:#2585f8 !important;
+}

@@ -1,90 +1,100 @@
+"use client";
 
-"use client"
-import { fetchTemp, fetchTemp2 } from './../utils';
 import { useState, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from 'next/navigation';
 import Head from '../component/Head';
 import Footer from '../component/Footer';
 import { AiOutlineDown, AiOutlineUp } from 'react-icons/ai';
 
-const categories = {
-  Products: [
-    "Shawarma Machines",
-    "Shawarma Knife & Meat Slicers",
-    "Pita Oven",
-    "Hummus Blender",
-    "Saj Machine",
-    "Kebab Char Broilers & Griddles",
-    "Falafel & Meat Grinder",
-    "Dough Mixers & Rollers",
-    "Automatic Salad Bar Chopper",
-    "Gas Ranges",
-    "Salad Bar Refrigeration & Food Warmers",
-    "Kunafet",
-    "Gelato & Middle Eastern Booza",
-    "Coffee & Espresso Machines",
-    "Accessories",
-    "Shawarma Meat Slicer",
-    "Rotisserie Chicken",
-    "Fryers",
-    "Automatic Kebab Encrusted",
-    "Used & Refurbished"
-  ],
-  Parts: [
-    "Shawarma Machine Parts",
-    "Hummus Machine Parts",
-    "Electric Shawarma Knives",
-    "Pita Oven Parts",
-    "Saj Machine Parts",
-    "Falafel Maker Parts",
-    "Mixer Parts",
-    "Divider Parts"
-  ]
-};
-
 const Dashboard = () => {
-  const [allTemp, setTemp] = useState([]);
+  const [allTemp, setTemp] = useState([]);       // All Products
+  const [allProd, setProd] = useState([]);       // Product Categories
+  const [allParts, setParts] = useState([]);     // Parts Categories
   const [searchQuery, setSearchQuery] = useState('');
-  const [filteredData, setFilteredData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]); // Data displayed based on `cat` or search
   const [expandedCategories, setExpandedCategories] = useState({});
   const [loading, setLoading] = useState(false);
 
   const router = useRouter();
   const searchParams = useSearchParams();
-  const filter = searchParams.get('filter');
+  const cat = searchParams.get('cat'); // Check for "cat" param in the URL
 
-  const fetchData = async () => {
-    setLoading(true);
-    const data = await fetchTemp();
-    setTemp(data);
-    setFilteredData(data);
-    setLoading(false);
-  };
-
+  // Fetch "allTemp" (Default Data) - All Products
   useEffect(() => {
-    fetchData();
+    const fetchAllProducts = async () => {
+      try {
+        const response = await fetch("/api/products");
+        const data = await response.json();
+        setTemp(data);
+        setFilteredData(data); // Initially display allTemp
+      } catch (error) {
+        console.error("Failed to fetch products:", error);
+      }
+    };
+    fetchAllProducts();
   }, []);
 
+  // Fetch based on "cat" parameter
   useEffect(() => {
-    if (filter) {
-      setFilteredData(allTemp.filter(item => item.type.includes(filter)));
-    } else {
-      setFilteredData(allTemp);
-    }
-  }, [filter, allTemp]);
+    const fetchCategoryData = async () => {
+      if (cat) {
+        try {
+          setLoading(true);
+          const response = await fetch(`/api/products/${cat}`);
+          const data = await response.json();
+          setFilteredData(data);
+        } catch (error) {
+          console.error("Failed to fetch category data:", error);
+        } finally {
+          setLoading(false);
+        }
+      } else {
+        setFilteredData(allTemp); // If no `cat`, fallback to `allTemp`
+      }
+    };
+    fetchCategoryData();
+  }, [cat, allTemp]);
 
-  const handleSearch = async (e) => {
+  // Fetch Product Categories
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch("/api/category1/products");
+        const data = await response.json();
+        setProd(data);
+      } catch (error) {
+        console.error("Failed to fetch products:", error);
+      }
+    };
+    fetchProducts();
+  }, []);
+
+  // Fetch Parts Categories
+  useEffect(() => {
+    const fetchParts = async () => {
+      try {
+        const response = await fetch("/api/category1/parts");
+        const data = await response.json();
+        setParts(data);
+      } catch (error) {
+        console.error("Failed to fetch parts:", error);
+      }
+    };
+    fetchParts();
+  }, []);
+
+  // Handle Search Functionality
+  const handleSearch = (e) => {
     if (e.key === "Enter") {
       const query = searchQuery.toLowerCase().trim();
-      if (query) {
-        const filtered = allTemp.filter(item => item.title.toLowerCase().includes(query) || item.type.toLowerCase().includes(query));
-        setFilteredData(filtered);
-      } else {
-        setFilteredData(allTemp); // If search query is empty, show all data
-      }
+      const filtered = allTemp.filter(item =>
+        item.title.toLowerCase().includes(query) || item.type.toLowerCase().includes(query)
+      );
+      setFilteredData(query ? filtered : allTemp);
     }
   };
 
+  // Handle Category Expansion
   const handleCategoryClick = (category) => {
     setExpandedCategories((prev) => ({
       ...prev,
@@ -92,9 +102,9 @@ const Dashboard = () => {
     }));
   };
 
+ 
   return (
     <>
-
       <Head />
       <header className="p-4 flex justify-center items-center mt-[100px]">
         <input
@@ -108,39 +118,51 @@ const Dashboard = () => {
       </header>
 
       <div className="flex flex-wrap md:flex-nowrap mt-4">
-        {/* Filter Section */}
+        {/* Sidebar */}
         <aside className="w-full md:w-1/4 p-2 md:p-4 bg-gray-100">
-          {Object.keys(categories).map((category) => (
-            <div key={category} className="m-0">
-              <div
-                className="flex justify-between items-center cursor-pointer"
-                onClick={() => handleCategoryClick(category)}
-              >
-                <h4 className="text-sm sm:text-lg font-semibold text-[#2585f8]">{category}</h4>
-                <span>
-                  {expandedCategories[category] ? (
-                    <AiOutlineUp className="text-[#2585f8]" />
-                  ) : (
-                    <AiOutlineDown className="text-[#2585f8]" />
-                  )}
-                </span>
-              </div>
-              {expandedCategories[category] && (
-                <ul className="list-none mt-1 space-y-1">
-                  {categories[category].map((subcategory) => (
-                    <li key={subcategory}>
-                      <button
-                        onClick={() => router.push(`?filter=${subcategory}`)}
-                        className="text-sm text-black hover:text-[#2585f8] transition text-left break-words"
-                      >
-                        {subcategory}
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </div>
-          ))}
+          {/* Products Category */}
+          <div>
+            <h3
+              onClick={() => handleCategoryClick('Products')}
+              className="flex items-center justify-between cursor-pointer text-lg font-semibold text-gray-800"
+            >
+              Products
+              {expandedCategories['Products'] ? <AiOutlineUp /> : <AiOutlineDown />}
+            </h3>
+            {expandedCategories['Products'] && (
+              <ul className="pl-4 mt-2 space-y-1">
+                {allProd.map((item, index) => (
+                  <li key={index}>
+                    <a href={`?cat=${item.name}`} className="text-gray-600 hover:text-blue-500 transition">
+                      {item.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+
+          {/* Parts Category */}
+          <div className="mt-4">
+            <h3
+              onClick={() => handleCategoryClick('Parts')}
+              className="flex items-center justify-between cursor-pointer text-lg font-semibold text-gray-800"
+            >
+              Parts
+              {expandedCategories['Parts'] ? <AiOutlineUp /> : <AiOutlineDown />}
+            </h3>
+            {expandedCategories['Parts'] && (
+              <ul className="pl-4 mt-2 space-y-1">
+                {allParts.map((item, index) => (
+                  <li key={index}>
+                    <a href={`?cat=${item.name}`} className="text-gray-600 hover:text-blue-500 transition">
+                      {item.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
         </aside>
 
         {/* Main Content */}
@@ -153,25 +175,23 @@ const Dashboard = () => {
                 filteredData.map((item, index) => (
                   <div key={index} className="p-4 border rounded-lg shadow-md hover:shadow-lg transition">
                     <h2 className="font-semibold text-lg text-[#2585f8]">{item.title || `Item ${index + 1}`}</h2>
-                    {item.img && (
-                      <img src={item.img[0]} alt={item.title} className="w-full h-48 object-cover mb-4" />
-                    )}
-                    <p className="text-gray-600">{item.type || "No type available."}</p>
+                    {item.img && <img src={item.img[0]} alt={item.title} className="w-full h-48 object-cover mb-4" />}
+                    <p className="text-gray-600">{item.category || "No type available."}</p>
                     <a href={`/product?id=${item.id}`} className="text-black hover:text-[#2585f8] transition">
                       Read More
                     </a>
                   </div>
                 ))
               ) : (
-                <p>No results found for "{searchQuery}".</p>
+                <p>No results found.</p>
               )}
             </div>
           )}
         </main>
       </div>
 
-      <Footer /> 
-      </>
+      <Footer />
+    </>
   );
 };
 

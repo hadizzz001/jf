@@ -1,305 +1,179 @@
 "use client"
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation"; // Import useRouter
 
 const Head = () => {
-    const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [isNavOpen, setIsNavOpen] = useState(false);
+  const [categories, setCategories] = useState([]);
+  const router = useRouter(); // Initialize the router
 
-    // Toggle the menu open state
-    const toggleMenu = () => {
-        setIsOpen(!isOpen);
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const toggleNav = () => {
+    setIsNavOpen(!isNavOpen);
+  };
+
+  // Fetch categories from API
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await fetch("/api/category");
+        const data = await response.json();
+        setCategories(data); // Assuming the response is an array of categories
+      } catch (error) {
+        console.error("Failed to fetch categories:", error);
+      }
     };
 
-    return (
-        <>
-            <svg
-                data-src="https://cdn11.bigcommerce.com/s-1g6otlwo/stencil/59095400-c1c1-013c-80e6-0210eb07f2b9/e/7d283170-74c7-013d-6dcc-46050de29e5d/img/icon-sprite.svg"
-                className="icons-svg-sprite"
+    fetchCategories();
+  }, []);
+
+  // Handle category click and navigate to the machines page
+  const handleCategoryClick = (categoryName) => {
+    router.push(`/machines?cat=${categoryName}`);
+  };
+
+  return (
+    <>
+      {/* Header */}
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 ${isOpen ? "bg-gray-800" : "bg-black"} transition-colors duration-300`}
+        style={{ padding: "1em" }}
+      >
+        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+          {/* Logo */}
+          <a href="/" className="flex items-center">
+            <img
+              src="https://ucarecdn.com/f4020f98-be3d-4d27-b301-7df5bf18ee96/logo.png"
+              alt="Jardali Food Machines"
+              className="w-36"
             />
-            <header className={`header header-children ${isOpen ? "is-open" : ""}`} role="banner" style={{ position: "fixed" }}>
-                <div className="header-inner" style={{ background: 'black' }}>
-                    <div className="container">
-                        <div className="Headerbox left-box">
-                            <a
-                                href="/"
-                                className={`mobileMenu-toggle ${isOpen ? "is-open" : ""}`}
-                                onClick={(e) => {
-                                    e.preventDefault();
-                                    toggleMenu();
-                                }}
-                                data-mobile-menu-toggle="menu"
-                            >
-                                <span className="mobileMenu-toggleIcon">Toggle menu</span>
-                            </a>
-                            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                                <a href="/" style={{ textDecoration: 'none' }}>
-                                    <div style={{ width: '200px', height: '100px' }}>
-                                        <img
-                                            src="https://ucarecdn.com/f4020f98-be3d-4d27-b301-7df5bf18ee96/logo.png"
-                                            alt="Jardali Food Machines- New York"
-                                            title="Jardali Food Machines- New York"
-                                            style={{ width: '100%', height: '60%', marginTop: "1em" }}
-                                        />
-                                    </div>
-                                </a>
-                            </div>
+          </a>
 
-                            <div className={`navPages-container ${isOpen ? "is-open" : ""}`} id="menu" data-menu="" style={{ marginTop: "2em" }}>
-                                <nav className="navPages" style={{ background: 'black' }}>
-                                    <ul className="navPages-list">
-                                        <li className="navPages-item">
-                                            <a
-                                                className="navPages-action menusimple has-subMenu is-close "
-                                                href="/"
-                                                data-collapsible="navPages-18"
-                                                aria-label="Products"
-                                                aria-expanded="false"
-                                            >
-                                                Home
-                                                <i className="icon navPages-action-moreIcon">
-                                                    <svg>
-                                                        <use xlinkHref="#icon-chevron-down" />
-                                                    </svg>
-                                                </i>
-                                            </a>
-                                        </li>
-                                        <li className="navPages-item">
-                                            <a
-                                                className="navPages-action menusimple has-subMenu is-close "
-                                                href="/about"
-                                                data-collapsible="navPages-40"
-                                                aria-label="Parts"
-                                                aria-expanded="false"
-                                            >
-                                                About
-                                                <i className="icon navPages-action-moreIcon">
-                                                    <svg>
-                                                        <use xlinkHref="#icon-chevron-down" />
-                                                    </svg>
-                                                </i>
-                                            </a>
-                                        </li>
-                                        <li className="navPages-item">
-                                            <a
-                                                className="navPages-action menusimple has-subMenu is-close "
-                                                href="/machines"
-                                                data-collapsible="navPages-40"
-                                                aria-label="Parts"
-                                                aria-expanded="false"
-                                            >
-                                                Machines
-                                                <i className="icon navPages-action-moreIcon">
-                                                    <svg>
-                                                        <use xlinkHref="#icon-chevron-down" />
-                                                    </svg>
-                                                </i>
-                                            </a>
-                                        </li>
-                                        <li className="navPages-item">
-                                            <a
-                                                className="navPages-action menusimple has-subMenu is-close "
-                                                href="/contact"
-                                                data-collapsible="navPages-40"
-                                                aria-label="Parts"
-                                                aria-expanded="false"
-                                            >
-                                                Contact
-                                                <i className="icon navPages-action-moreIcon">
-                                                    <svg>
-                                                        <use xlinkHref="#icon-chevron-down" />
-                                                    </svg>
-                                                </i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </nav>
-                            </div>
-                            <nav className="navUser">
-                                <ul className="navUser-section navUser-section--alt">
-                                    <li className="navUser-item navUser-item-quickSearch">
-                                        <button
-                                            className="navUser-action navUser-action--quickSearch quicksearchbox focuson"
-                                            type="button"
-                                            id="quick-search-expand"
-                                            data-search="quickSearch"
-                                            aria-controls="quickSearch"
-                                            aria-label="Search"
-                                        >
-                                            <svg className="search-icon Headericon">
-                                                <use xlinkHref="#icon-search" />
-                                            </svg>
-                                        </button>
-                                    </li>
-                                    <li className="navUser-item navUser-item--account">
-                                        <a
-                                            className="navUser-action needsclick"
-                                            href="account.php.html"
-                                            data-dropdown="userAccount"
-                                            aria-controls="userAccount"
-                                            aria-expanded="false"
-                                            alt="User Account"
-                                            title="User Account"
-                                        >
-                                            <svg className="Headericon">
-                                                <use xlinkHref="#icon-user" />
-                                            </svg>
-                                            <i className="icon" aria-hidden="true">
-                                                <svg>
-                                                    <use xlinkHref="#icon-chevron-down" />
-                                                </svg>
-                                            </i>
-                                        </a>
-                                        <ul
-                                            className="dropdown-menu"
-                                            id="userAccount"
-                                            data-dropdown-content=""
-                                            data-options="align:right"
-                                            aria-hidden="true"
-                                            tabIndex={-1}
-                                        >
-                                            <li className="navUser-item">
-                                                <a
-                                                    className="navUser-action needsclick"
-                                                    href="login.php.html"
-                                                >
-                                                    <i className="icon" aria-hidden="true">
-                                                        <svg>
-                                                            <use xlinkHref="#icon-signout" />
-                                                        </svg>
-                                                    </i>
-                                                    <span>Sign in</span>
-                                                </a>
-                                            </li>
-                                            <li className="navUser-item">
-                                                <a
-                                                    className="navUser-action needsclick"
-                                                    href="login.php@action=create_account.html"
-                                                >
-                                                    <i className="icon" aria-hidden="true">
-                                                        <svg>
-                                                            <use xlinkHref="#icon-register" />
-                                                        </svg>
-                                                    </i>
-                                                    <span>Create an Account</span>
-                                                </a>
-                                            </li>
-                                            <li className="navUser-item navUser-item-wishlist">
-                                                <a
-                                                    className="navUser-action needsclick"
-                                                    href="wishlist.php.html"
-                                                >
-                                                    <i className="icon" aria-hidden="true">
-                                                        <svg>
-                                                            <use xlinkHref="#icon-wishlist" />
-                                                        </svg>
-                                                    </i>
-                                                    <span>Wishlist</span>
-                                                </a>
-                                            </li>
-                                            <li
-                                                className="navUser-item navUser-item-compare"
-                                                id="compare-link"
-                                            >
-                                                <a
-                                                    className="navUser-action navUser-item--compare needsclick"
-                                                    title="Compare"
-                                                    id="compareurl"
-                                                    href="compare.html"
-                                                >
-                                                    <i className="icon" aria-hidden="true">
-                                                        <svg>
-                                                            <use xlinkHref="#icon-compare" />
-                                                        </svg>
-                                                    </i>
-                                                    <span>
-                                                        Compare{" "}
-                                                        <span
-                                                            className="countPill countPill--positive"
-                                                            id="compare-item"
-                                                        />
-                                                    </span>
-                                                </a>
-                                            </li>
-                                            <li className="navUser-item currencyselectorbox"></li>
-                                        </ul>
-                                    </li>
-                                    <li className="navUser-item navUser-item--cart">
-                                        <a
-                                            className="navUser-action"
-                                            data-cart-preview=""
-                                            data-dropdown="cart-preview-dropdown"
-                                            data-options="align:right"
-                                            href="cart.php@action=add&product_id=453.html"
-                                            aria-label="Cart with 0 items"
-                                            alt="Cart with 0 items"
-                                            title=""
-                                        >
-                                            <span className="navUser-item-cartLabel">
-                                                <svg className="cart Headericon">
-                                                    <use xlinkHref="#icon-cart" />
-                                                </svg>
-                                            </span>
-                                            <span className="countPill cart-quantity" />
-                                        </a>
-                                        <div
-                                            className="dropdown-menu dropdownfull"
-                                            id="cart-preview-dropdown"
-                                            data-dropdown-content=""
-                                        />
-                                    </li>
-                                </ul>
-                            </nav>
-                            <div className="headersearch-dropdownbox">
-                                <div
-                                    className="dropdown dropdown--quickSearch"
-                                    id="quickSearch"
-                                    aria-hidden="true"
-                                    data-prevent-quick-search-close=""
-                                >
-                                    <div className="searchboxmain">
-                                        <form
-                                            className="form"
-                                            action="https://www.spinninggrillers.com/search.php"
-                                            id="mobileQuickSearchForm"
-                                        >
-                                            <fieldset className="form-fieldset">
-                                                <div className="form-field">
-                                                    <label className="is-srOnly" htmlFor="search_query">
-                                                        Search
-                                                    </label>
-                                                    <input
-                                                        className="form-input"
-                                                        data-search-quick=""
-                                                        name="search_query"
-                                                        id="search_query"
-                                                        data-error-message="Search field cannot be empty."
-                                                        placeholder="Search the store"
-                                                        autoComplete="off"
-                                                    />
-                                                    <span
-                                                        className="search-icon-main"
-                                                        onclick="document.getElementById('mobileQuickSearchForm').submit();"
-                                                    >
-                                                        <svg className="search-icon Headericon">
-                                                            <use xlinkHref="#icon-search" />
-                                                        </svg>
-                                                    </span>
-                                                </div>
-                                            </fieldset>
-                                        </form>
-                                        <section
-                                            className="quickSearchResults"
-                                            data-bind="html: results"
-                                        />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </header>
-        </>
-    )
-}
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex space-x-6">
+            <a href="/" className="text-white hover:text-gray-300 sm:text-white">Home</a>
+            <a href="/about" className="text-white hover:text-gray-300">About</a>
+            <button
+              onClick={toggleMenu}
+              className="text-white hover:text-gray-300 focus:outline-none"
+              aria-expanded={isOpen}
+              aria-controls="machines-menu"
+            >
+              Machines
+            </button>
+            <a href="/contact" className="text-white hover:text-gray-300">Contact</a>
+          </nav>
 
-export default Head
+          {/* Mobile Hamburger Icon */}
+          <button
+            className="block md:hidden text-white hover:text-gray-300 focus:outline-none"
+            onClick={toggleNav}
+            aria-expanded={isNavOpen}
+            aria-controls="mobile-menu"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              className="w-6 h-6"
+            >
+              {isNavOpen ? (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              ) : (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h16m-7 6h7"
+                />
+              )}
+            </svg>
+          </button>
+        </div>
+
+        {/* Mobile Navigation */}
+        {isNavOpen && (
+          <nav
+            id="mobile-menu"
+            className="md:hidden bg-black text-white py-4 px-6"
+          >
+            <a href="/" className="block py-2 hover:text-gray-300" onClick={toggleNav}>
+              Home
+            </a>
+            <a href="/about" className="block py-2 hover:text-gray-300" onClick={toggleNav}>
+              About
+            </a>
+            <button
+              onClick={() => {
+                toggleMenu();
+                toggleNav();
+              }}
+              className="block w-full text-left py-2 hover:text-gray-300"
+            >
+              Machines
+            </button>
+            <a href="/contact" className="block py-2 hover:text-gray-300" onClick={toggleNav}>
+              Contact
+            </a>
+          </nav>
+        )}
+      </header>
+
+      {/* Dropdown content for Machines */}
+      {isOpen && (
+        <div
+          id="machines-menu"
+          className="fixed top-0 left-0 right-0 z-40 bg-gray-900 mt-20"
+          style={{ height: "auto" }}
+        >
+          <div className="container mx-auto">
+            <div
+              className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-5 gap-6"
+              style={{
+                maxHeight: "700px", // Set a max height for the grid
+                overflowY: "auto",  // Enable vertical scrolling
+              }}
+            >
+              {categories.length > 0 ? (
+                categories.map((category, index) => (
+                  <a href={`/machines?cat=${category.name}`} target="_blank" role="button">
+                  <div key={index} className="flex items-center justify-start space-x-3">
+                    <img
+                      src={category.img}
+                      alt={category.name}
+                      className="w-12 h-12 object-cover rounded-md"
+                      onClick={() => handleCategoryClick(category.name)} // Handle click
+                    />
+                    <h3
+                      className="text-xs text-white text-left"
+                      style={{ fontWeight: "normal" }}
+                    >
+                      
+                      {category.name}
+                    </h3>
+                  </div>
+                  </a>
+                ))
+              ) : (
+                <p className="text-white text-center">Loading categories...</p>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+    </>
+  );
+};
+
+export default Head;
