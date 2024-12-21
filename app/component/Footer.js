@@ -16,12 +16,12 @@ const Footer = () => {
                   <div className="header-logo-image-container">
                     <img
                       className="header-logo-image"
-                      src="https://ucarecdn.com/f4020f98-be3d-4d27-b301-7df5bf18ee96/logo.png"
-                      srcSet="https://ucarecdn.com/f4020f98-be3d-4d27-b301-7df5bf18ee96/logo.png"
+                      src="/pics/logo1.png"
+                      srcSet="/pics/logo1.png"
                       alt="Jardali Food Machines- New York"
                       title="Jardali Food Machines- New York"
-                      width="100%"
-                      height="100%"
+                      width="50%"
+                      height="50%"
                     />
                   </div>
                 </a>
@@ -138,6 +138,15 @@ const Footer = () => {
         </section>
       </div>
       <div data-content-region="ssl_site_seal--global" />
+
+      <style
+  dangerouslySetInnerHTML={{
+    __html:
+      "\n  .footer {\n    background-color: white !important;\n}\n\n.nichefooter .footer-info .footer-info-col .footer-info-list a {\n    color: black !important;\n}\n\n.nichefooter .contactdeatils p a {\n    color: black !important;\n}\n\n.nichefooter .contactdeatils p {\n    color: black !important;\n}\n"
+  }}
+/>
+
+
     </footer>
   )
 }

@@ -12,6 +12,11 @@ const PageContent = ({ search }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [loading, setLoading] = useState(true);
   const [activeSection, setActiveSection] = useState("details"); // Tracks active tab
+  const [activeSection1, setActiveSection1] = useState(null);
+
+
+  const [startIndex, setStartIndex] = useState(0);
+  const visibleCount = 5; // Number of visible thumbnails
 
 
   const fetchProductData = async (id) => {
@@ -106,41 +111,259 @@ const PageContent = ({ search }) => {
 
 
 
+
+
+
+
+
+
+  const handleScrollUp = () => {
+    if (startIndex > 0) {
+      setStartIndex(startIndex - 1);
+    }
+  };
+
+  const handleScrollDown = () => {
+    if (startIndex + visibleCount < imgs.length) {
+      setStartIndex(startIndex + 1);
+    }
+  };
+
+  const handleScrollLeft = () => {
+    if (currentImageIndex > 0) {
+      setCurrentImageIndex(currentImageIndex - 1);
+    }
+  };
+
+  const handleScrollRight = () => {
+    if (currentImageIndex < imgs.length - 1) {
+      setCurrentImageIndex(currentImageIndex + 1);
+    }
+  };
+
+
+
+
+  function handleMouseMove(e) {
+    const image = document.getElementById("mainImage");
+    const { left, top, width, height } = image.getBoundingClientRect();
+    const offsetX = e.clientX - left;
+    const offsetY = e.clientY - top;
+    const centerX = width / 2;
+    const centerY = height / 2;
+
+    // Calculating the percentage of the mouse position within the image bounds
+    const moveX = ((offsetX - centerX) / centerX) * 50; // Adjusted for a more natural effect
+    const moveY = ((offsetY - centerY) / centerY) * 50; // Adjusted for a more natural effect
+
+    image.style.transition = "transform 0.1s ease-in-out"; // Instant zoom effect
+    image.style.transform = `scale(1.5) translate(${moveX}%, ${moveY}%)`; // Apply accurate cursor-following zoom
+  }
+
+  // Reset zoom when mouse leaves the image
+  function handleMouseLeave() {
+    const image = document.getElementById("mainImage");
+    image.style.transition = "transform 0.3s ease-in-out"; // Smooth return
+    image.style.transform = "scale(1)"; // Reset zoom
+  }
+
+
+
+
+
+
+
+
+  const handleClick = (section) => {
+    setActiveSection(section);
+  };
+
+
   return (
     <div className="min-h-screen flex flex-col items-center bg-gray-50 py-12 mt-20">
       <div className="flex flex-col lg:flex-row w-full p-6 bg-white rounded-lg shadow-lg">
         {/* Image Slider */}
-        <div className="flex-none w-full lg:w-1/2 flex space-x-4">
-          <div className="flex flex-col space-y-4 overflow-y-auto">
-            {imgs && imgs.length > 0 ? (
-              imgs.map((img, index) => (
+
+        <div>
+          {/* PC Version */}
+          <div className="hidden lg:flex space-x-4">
+            {/* Thumbnail Slider */}
+            <div className="relative flex flex-col">
+              <div
+                className="relative overflow-hidden h-96"
+                style={{ perspective: "1000px" }}
+              >
+                <div
+                  className="flex flex-col transition-transform duration-500 ease-in-out"
+                  style={{
+                    transform: `translateY(-${startIndex * 100}px)`,
+                  }}
+                >
+                  {imgs.map((img, index) => (
+                    <div
+                      key={index}
+                      className={`flex-shrink-0 w-20 h-20 rounded-lg transition-transform duration-500 ease-in-out ${currentImageIndex === index
+                          ? "scale-105  "
+                          : "scale-95  "
+                        }`}
+                      style={{
+                        transformOrigin: "center",
+                        opacity:
+                          startIndex <= index && index < startIndex + visibleCount
+                            ? 1
+                            : 0.5,
+                      }}
+                    >
+                      <img
+                        src={img}
+                        alt={`thumbnail-${index}`}
+                        className="w-full h-full object-cover cursor-pointer"
+                        onClick={() => handleThumbnailClick(index)}
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="flex justify-center space-x-4 mt-4">
+                <button
+                  onClick={handleScrollUp}
+                  className="bg-gray-200 hover:bg-gray-300 rounded-full p-2 disabled:opacity-50"
+                  disabled={startIndex === 0}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="w-5 h-5"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M19.5 15l-7.5-7.5L4.5 15"
+                    />
+                  </svg>
+                </button>
+                <button
+                  onClick={handleScrollDown}
+                  className="bg-gray-200 hover:bg-gray-300 rounded-full p-2 disabled:opacity-50"
+                  disabled={startIndex + visibleCount >= imgs.length}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="w-5 h-5"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M4.5 9l7.5 7.5L19.5 9"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div
+              className="relative w-full h-96 overflow-hidden"
+              onMouseMove={(e) => handleMouseMove(e)}
+              onMouseLeave={() => handleMouseLeave()}
+            >
+              {imgs && imgs.length > 0 ? (
                 <img
-                  key={index}
-                  src={img}
-                  alt={`thumbnail-${index}`}
-                  className={`w-20 h-20 object-cover rounded-lg cursor-pointer transition-transform duration-300 ease-in-out ${currentImageIndex === index
-                    ? "border-2 border-blue-600"
-                    : "border-2 border-transparent"
-                    }`}
-                  onClick={() => handleThumbnailClick(index)}
+                  src={imgs[currentImageIndex]}
+                  alt={`image-${currentImageIndex}`}
+                  className="w-full h-full object-cover rounded-lg transition-all  ease-in-out"
+                  id="mainImage"
                 />
-              ))
-            ) : (
-              <div className="text-center text-gray-500">No images available</div>
-            )}
+              ) : (
+                <div className="text-center text-gray-500">No main image available</div>
+              )}
+            </div>
           </div>
-          <div className="relative w-full h-96">
-            {imgs && imgs.length > 0 ? (
-              <img
-                src={imgs[currentImageIndex]}
-                alt={`image-${currentImageIndex}`}
-                className="w-full h-full object-cover rounded-lg transition-all duration-500 ease-in-out"
-              />
-            ) : (
-              <div className="text-center text-gray-500">No main image available</div>
-            )}
+
+          {/* Mobile Version */}
+          <div className="block lg:hidden flex flex-col items-center space-y-4">
+            <div className="relative flex items-center w-full">
+              {/* Left Arrow */}
+              <button
+                onClick={handleScrollLeft}
+                className="absolute left-0 bg-gray-200 hover:bg-gray-300 rounded-full p-2 disabled:opacity-50"
+                disabled={currentImageIndex === 0}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-5 h-5"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M15 19.5L7.5 12l7.5-7.5"
+                  />
+                </svg>
+              </button>
+
+              {/* Thumbnails */}
+              <div className="flex justify-center overflow-x-auto space-x-4 mx-8">
+                {imgs.map((img, index) => (
+                  <img
+                    key={index}
+                    src={img}
+                    alt={`thumbnail-${index}`}
+                    className={`w-16 h-16 object-cover rounded-lg cursor-pointer transition-transform duration-300 ease-in-out ${currentImageIndex === index
+                        ? "scale-105 border-2 border-blue-600"
+                        : "scale-95 border-2 border-transparent"
+                      }`}
+                    onClick={() => handleThumbnailClick(index)}
+                  />
+                ))}
+              </div>
+
+              {/* Right Arrow */}
+              <button
+                onClick={handleScrollRight}
+                className="absolute right-0 bg-gray-200 hover:bg-gray-300 rounded-full p-2 disabled:opacity-50"
+                disabled={currentImageIndex === imgs.length - 1}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-5 h-5"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M9 19.5l7.5-7.5L9 4.5"
+                  />
+                </svg>
+              </button>
+            </div>
+
+            {/* Main Image */}
+            <div className="relative w-full">
+              {imgs && imgs.length > 0 ? (
+                <img
+                  src={imgs[currentImageIndex]}
+                  alt={`image-${currentImageIndex}`}
+                  className="w-full h-64 object-cover rounded-lg transition-all duration-100 ease-in-out"
+                />
+              ) : (
+                <div className="text-center text-gray-500">No main image available</div>
+              )}
+            </div>
           </div>
         </div>
+
 
         {/* Product Info */}
         <div className="flex-1 px-6 py-4">
@@ -281,140 +504,34 @@ const PageContent = ({ search }) => {
       <div className=" container  ">
         <div className=" "> </div>
 
-        <div className="space-x-4 mt-6  ">
+        <div className="space-x-4 mt-6">
           <button
             onClick={() => setActiveSection("details")}
-            className={`flex-1 py-3 px-6 rounded-lg text-white`}
-            style={{ border: '1px solid #2585f8', color: '#2585f8' }}
+            className="flex-1 py-3 px-6 rounded-lg text-[#2585f8] border border-[#2585f8] hover:bg-[#2585f8] hover:text-white focus:bg-[#2585f8] focus:text-white"
+            style={{ border: '1px solid #2585f8' }}
           >
-            <i className="inline-block ">
-              <svg
-                version="1.1"
-                id="Layer_1"
-                xmlns="http://www.w3.org/2000/svg"
-                xmlnsXlink="http://www.w3.org/1999/xlink"
-                width="24px"
-                height="24px"
-                viewBox="0 0 64 64"
-                enableBackground="new 0 0 64 64"
-                xmlSpace="preserve"
-                fill="#000000"
-              >
-                <g id="SVGRepo_bgCarrier" strokeWidth={0} />
-                <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" />
-                <g id="SVGRepo_iconCarrier">
-                  {" "}
-                  <g>
-                    {" "}
-                    <polygon
-                      fill="none"
-                      stroke="#2585f8"
-                      strokeWidth={2}
-                      strokeMiterlimit={10}
-                      points="23,1 55,1 55,63 9,63 9,15 "
-                    />{" "}
-                    <polyline
-                      fill="none"
-                      stroke="#2585f8"
-                      strokeWidth={2}
-                      strokeMiterlimit={10}
-                      points="9,15 23,15 23,1 "
-                    />{" "}
-                    <line
-                      fill="none"
-                      stroke="#2585f8"
-                      strokeWidth={2}
-                      strokeMiterlimit={10}
-                      x1={32}
-                      y1={14}
-                      x2={46}
-                      y2={14}
-                    />{" "}
-                    <line
-                      fill="none"
-                      stroke="#2585f8"
-                      strokeWidth={2}
-                      strokeMiterlimit={10}
-                      x1={18}
-                      y1={24}
-                      x2={46}
-                      y2={24}
-                    />{" "}
-                    <line
-                      fill="none"
-                      stroke="#2585f8"
-                      strokeWidth={2}
-                      strokeMiterlimit={10}
-                      x1={18}
-                      y1={34}
-                      x2={46}
-                      y2={34}
-                    />{" "}
-                    <line
-                      fill="none"
-                      stroke="#2585f8"
-                      strokeWidth={2}
-                      strokeMiterlimit={10}
-                      x1={18}
-                      y1={44}
-                      x2={46}
-                      y2={44}
-                    />{" "}
-                    <line
-                      fill="none"
-                      stroke="#2585f8"
-                      strokeWidth={2}
-                      strokeMiterlimit={10}
-                      x1={18}
-                      y1={54}
-                      x2={46}
-                      y2={54}
-                    />{" "}
-                  </g>{" "}
-                </g>
-              </svg>
+            <i className="inline-block">
+              {/* Icon goes here */}
             </i>
-
             Product Details
           </button>
+
           <button
             id="specbtn"
             onClick={() => setActiveSection("specifications")}
-            className={`flex-1 py-3 px-6 rounded-lg text-white  `}
-            style={{ border: '1px solid #2585f8', color: '#2585f8' }}
+            className="flex-1 py-3 px-6 rounded-lg text-[#2585f8] border border-[#2585f8] hover:bg-[#2585f8] hover:text-white focus:bg-[#2585f8] focus:text-white"
+            style={{ border: '1px solid #2585f8' }}
           >
             <i className="inline-block mr-1">
-
-              <svg
-                fill="#2585f8"
-                height="24px"
-                width="24px"
-                version="1.1"
-                id="Layer_1"
-                xmlns="http://www.w3.org/2000/svg"
-                xmlnsXlink="http://www.w3.org/1999/xlink"
-                viewBox="0 0 512 512"
-                xmlSpace="preserve"
-              >
-                <g id="SVGRepo_bgCarrier" strokeWidth={0} />
-                <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" />
-                <g id="SVGRepo_iconCarrier">
-                  {" "}
-                  <g>
-                    {" "}
-                    <g>
-                      {" "}
-                      <path d="M512,202.667v-69.12c0-25.707-20.8-48.213-44.48-48.213H340.8C336.533,41.28,304.96,32,256,32 c-48.96,0-80.533,9.28-84.8,53.333H44.48C20.8,85.333,0,107.84,0,133.547v69.12c0.107,0.427,0.107,0.96,0.32,1.387 c0.213,11.52,3.733,22.72,10.24,32.213L0,437.333C0,457.387,0,480,32,480h448c32,0,32-22.72,32-43.2l-10.56-200.533 c6.507-9.493,10.133-20.693,10.24-32.213C511.893,203.627,511.893,203.093,512,202.667z M256,53.333 c47.68,0,60.907,8.64,63.467,32H192.533C195.093,61.973,208.32,53.333,256,53.333z M288,266.667v42.667h-64v-42.667H288z M245.333,245.334L245.333,245.334V106.667h21.333v138.667H245.333z M21.333,133.547c0-13.76,11.307-26.88,23.147-26.88H224 v138.667h-10.667c-5.867,0-10.667,4.8-10.667,10.667v21.227c-59.2-1.707-181.12-17.067-181.12-74.56h-0.213V133.547z M224.107,458.667H32c-10.667,0-10.667,0-10.667-20.8l9.6-181.227c48.32,34.88,140.053,40.853,171.84,41.813V320 c0,5.867,4.8,10.667,10.667,10.667h10.667V458.667z M266.667,458.667h-21.333v-128h21.333V458.667z M480,458.667H288v-128h10.667 c5.867,0,10.667-4.8,10.667-10.667v-21.547c31.68-0.96,123.413-6.933,171.84-41.813l9.493,180.693 C490.667,458.667,490.667,458.667,480,458.667z M490.667,202.667L490.667,202.667h-0.213c0,57.387-121.92,72.853-181.12,74.453 V256c0-5.867-4.8-10.667-10.667-10.667H288V106.667h179.52c11.84,0,23.147,13.013,23.147,26.88V202.667z" />{" "}
-                    </g>{" "}
-                  </g>{" "}
-                </g>
-              </svg>
-
-
+              {/* Icon goes here */}
             </i>
             Specifications
           </button>
         </div>
+
+
+
+
 
         <div className="col-1"> </div>
       </div>
@@ -422,37 +539,49 @@ const PageContent = ({ search }) => {
       <div className="w-full bg-white mt-8 px-8 py-6 shadow-lg">
         {activeSection === "details" && (
           <div
-            className="prose lg:prose-xl max-w-none custom-list"
+            className="prose lg:prose-xl max-w-[500px] custom-list"
+            style={{ maxWidth: '500px' }}
             dangerouslySetInnerHTML={{ __html: description }}
           />
         )}
         {activeSection === "specifications" && (
-          <table className="table-auto w-full border-collapse border border-gray-200">
-
-            <tbody>
+          <div className="specifications-list">
+            <ul className="list-none p-0">
               {specifications.map((spec, index) => (
-                <tr key={index} className="odd:bg-white even:bg-gray-50">
-                  <td className="border border-gray-300 px-4 py-2" style={{ textAlign: "center" }}>{spec.name}</td>
-                  <td className="border border-gray-300 px-4 py-2" style={{ textAlign: "center" }}>{spec.value}</td>
-                </tr>
+                <li key={index} className="flex items-center space-x-2">
+                  <span
+                    className="w-2.5 h-2.5 rounded-full"
+                    style={{ backgroundColor: "#2585f8" }}
+                  ></span>
+                  <span>{spec.name}</span>
+                </li>
               ))}
-            </tbody>
-          </table>
+            </ul>
+          </div>
+
         )}
       </div>
 
 
 
+
+
+
+
+
+
+
+
+
       <div className="flex justify-center items-center min-h-screen bg-gray-100 mt-20 mb-20" style={{ width: "100%", height: "700px" }}>
   {embedUrl ? (
-    <div className="w-full h-full">
+    <div className="w-full h-full" style={{ width: "50%", marginLeft: "auto", marginRight: "auto" }}>
       <iframe
         src={embedUrl}
         title="YouTube Video"
         frameBorder="0"
-        
         allowFullScreen
-        className="w-full h-full" // Full width and height
+        className="w-full h-full" // Full width and height of the container
       />
     </div>
   ) : (
@@ -461,7 +590,8 @@ const PageContent = ({ search }) => {
 </div>
 
 
-<h1>Related Products</h1>
+
+      <h1>Related Products</h1>
 
       {type ? <ProductsList type={type} /> : <p>Loading...</p>}
 

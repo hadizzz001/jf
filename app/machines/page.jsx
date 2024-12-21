@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, Suspense } from "react";
+import { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from 'next/navigation';
 import Head from '../component/Head';
 import Footer from '../component/Footer';
@@ -12,7 +12,10 @@ const Dashboard = () => {
   const [allParts, setParts] = useState([]);     // Parts Categories
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredData, setFilteredData] = useState([]); // Data displayed based on `cat` or search
-  const [expandedCategories, setExpandedCategories] = useState({});
+  const [expandedCategories, setExpandedCategories] = useState({
+    Products: true,
+    Parts: true,
+  }); // Initialize with all categories expanded
   const [loading, setLoading] = useState(false);
 
   const router = useRouter();
@@ -39,7 +42,8 @@ const Dashboard = () => {
     const fetchCategoryData = async () => {
       if (cat) {
         try {
-          setLoading(true);
+          setLoading(true); 
+          
           const response = await fetch(`/api/products/${cat}`);
           const data = await response.json();
           setFilteredData(data);
@@ -102,7 +106,6 @@ const Dashboard = () => {
     }));
   };
 
- 
   return (
     <>
       <Head />

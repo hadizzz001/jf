@@ -62,7 +62,7 @@ export default function RootLayout({ children }) {
   />
   {/* END Preloading first images */}
   <link
-    href="https://ucarecdn.com/f4020f98-be3d-4d27-b301-7df5bf18ee96/logo.png"
+    href="/pics/logo.png"
     rel="shortcut icon"
   />
   <meta
