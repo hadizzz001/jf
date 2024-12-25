@@ -138,6 +138,12 @@ const Head = () => {
             </li>
 
             <li className="relative list-none group cursor-pointer">
+              <a href="/client" className="text-black font-medium hover:text-[#2585f8] relative">
+                Clients
+              </a>
+              <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#2585f8] transition-all duration-300 group-hover:w-full"></span>
+            </li>
+            <li className="relative list-none group cursor-pointer">
               <a href="/contact" className="text-black font-medium hover:text-[#2585f8] relative">
                 Contact
               </a>
@@ -211,6 +217,9 @@ const Head = () => {
               >
                 Parts
               </button>
+              <a href="/client" className="block py-2 hover:text-gray-300" onClick={toggleNav}>
+                Clients
+              </a>
               <a href="/contact" className="block py-2 hover:text-gray-300" onClick={toggleNav}>
                 Contact
               </a>

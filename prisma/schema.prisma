@@ -31,3 +31,11 @@ model Category {
   type String
   img  String[]
 }
+
+
+
+model Client{
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  location String
+  client String 
+}

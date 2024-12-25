@@ -14,9 +14,11 @@ const Dashboard = () => {
   const [filteredData, setFilteredData] = useState([]); // Data displayed based on `cat` or search
   const [expandedCategories, setExpandedCategories] = useState({
     Products: true,
-    Parts: true,
+    Parts: false,
   }); // Initialize with all categories expanded
   const [loading, setLoading] = useState(false);
+  const [visibleItemsCount, setVisibleItemsCount] = useState(12);  // Number of items to show
+  const [totalItemsCount, setTotalItemsCount] = useState(0); // Total number of items
 
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -28,8 +30,13 @@ const Dashboard = () => {
       try {
         const response = await fetch("/api/products");
         const data = await response.json();
-        setTemp(data);
-        setFilteredData(data); // Initially display allTemp
+        if (Array.isArray(data)) {
+          setTemp(data);
+          setFilteredData(data); // Initially display allTemp
+          setTotalItemsCount(data.length); // Set the total number of items
+        } else {
+          console.error("Expected an array, but got:", data);
+        }
       } catch (error) {
         console.error("Failed to fetch products:", error);
       }
@@ -42,11 +49,29 @@ const Dashboard = () => {
     const fetchCategoryData = async () => {
       if (cat) {
         try {
-          setLoading(true); 
-          
+          setLoading(true);
+
           const response = await fetch(`/api/products/${cat}`);
-          const data = await response.json();
-          setFilteredData(data);
+          const data = await response.json(); 
+          console.log("code: ", response.status);
+          if (Array.isArray(data)) { 
+            console.log("enter 0");
+            if ( response.status === 404) {
+              console.log("enter 1");
+              
+              // If no data is returned, display an empty message
+              setFilteredData([]);
+              setTotalItemsCount(0);
+            } else {
+              console.log("enter 2");
+              setFilteredData(data);
+              setTotalItemsCount(data.length); // Set the total number of items for the category
+            }
+          } else {
+            setFilteredData([]);
+            setTotalItemsCount(0);
+            console.error("Expected an array, but got:", data);
+          }
         } catch (error) {
           console.error("Failed to fetch category data:", error);
         } finally {
@@ -54,6 +79,7 @@ const Dashboard = () => {
         }
       } else {
         setFilteredData(allTemp); // If no `cat`, fallback to `allTemp`
+        setTotalItemsCount(allTemp.length); // Set the total number of items
       }
     };
     fetchCategoryData();
@@ -95,6 +121,7 @@ const Dashboard = () => {
         item.title.toLowerCase().includes(query) || item.type.toLowerCase().includes(query)
       );
       setFilteredData(query ? filtered : allTemp);
+      setTotalItemsCount(query ? filtered.length : allTemp.length);
     }
   };
 
@@ -105,6 +132,17 @@ const Dashboard = () => {
       [category]: !prev[category],
     }));
   };
+
+  // Handle Show More Button Click
+  const handleShowMore = () => {
+    setVisibleItemsCount((prevCount) => {
+      // Don't allow visibleItemsCount to exceed totalItemsCount
+      const newCount = prevCount + 12;
+      return newCount > totalItemsCount ? totalItemsCount : newCount;
+    });
+  };
+
+  const allItemsLoaded = visibleItemsCount >= totalItemsCount; // Check if all items are displayed
 
   return (
     <>
@@ -172,22 +210,43 @@ const Dashboard = () => {
         <main className="w-full md:w-3/4 p-4">
           {loading ? (
             <p>Loading...</p>
+          ) : filteredData.length === 0 ? (
+            <p>No data available for this category.</p> // Show this message if no data is available
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {filteredData.length > 0 ? (
-                filteredData.map((item, index) => (
+              {Array.isArray(filteredData) && filteredData.slice(0, visibleItemsCount).map((item, index) => (
+                <a href={`/product?id=${item.id}`} className="text-black hover:text-[#2585f8] transition">
                   <div key={index} className="p-4 border rounded-lg shadow-md hover:shadow-lg transition">
-                    <h2 className="font-semibold text-lg text-[#2585f8]">{item.title || `Item ${index + 1}`}</h2>
-                    {item.img && <img src={item.img[0]} alt={item.title} className="w-full h-48 object-cover mb-4" />}
-                    <p className="text-gray-600">{item.category || "No type available."}</p>
-                    <a href={`/product?id=${item.id}`} className="text-black hover:text-[#2585f8] transition">
-                      Read More
-                    </a>
+                    {item.img && (
+                      <div className="relative">
+                        <img
+                          src={item.img[0]}
+                          alt={item.title}
+                          className="w-full aspect-[1/1] object-cover mb-4 transition-all duration-300"
+                        />
+                        <img
+                          src={item.img[1]}
+                          alt={item.title}
+                          className="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-300 hover:opacity-100"
+                        />
+                      </div>
+                    )}
+                    <h2 style={{textAlign:'center'}} className="font-semibold text-lg text-[#2585f8] mt-4">{item.title || `Item ${index + 1}`}</h2>
+                    <p style={{textAlign:'center'}} className="text-gray-600">{item.category || "No type available."}</p>
                   </div>
-                ))
-              ) : (
-                <p>No results found.</p>
-              )}
+                </a>
+              ))}
+            </div>
+          )}
+
+          {!allItemsLoaded && (
+            <div className="mt-4 text-center">
+              <button
+                onClick={handleShowMore}
+                className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+              >
+                Show More
+              </button>
             </div>
           )}
         </main>
