@@ -606,15 +606,11 @@ const PageContent = ({ search }) => {
           {activeSection === "specifications" && (
             <div className="specifications-list">
               <ul className="list-none p-0">
-                {specifications.map((spec, index) => (
-                  <li key={index} className="flex items-center space-x-2">
-                    <span
-                      className="w-2.5 h-2.5 rounded-full"
-                      style={{ backgroundColor: "#2585f8" }}
-                    ></span>
-                    <span>{spec.name}</span>
-                  </li>
-                ))}
+              <div
+              className="prose lg:prose-xl max-w-[500px] custom-list"
+              style={{ maxWidth: '500px' }}
+              dangerouslySetInnerHTML={{ __html: specifications }}
+            />
               </ul>
             </div>
 
