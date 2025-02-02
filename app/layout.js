@@ -120,7 +120,7 @@ export default function RootLayout({ children }) {
         style={{zIndex: 100}}
       >
         <img
-          src="https://ucarecdn.com/a0f7f57f-b932-4d7b-b6a7-38b622616942/whatsappsvgrepocom1.png"
+          src="api/proxy?url=https://ucarecdn.com/a0f7f57f-b932-4d7b-b6a7-38b622616942/whatsappsvgrepocom1.png"
           alt="WhatsApp"
           className="w-10 h-10  hover:scale-110 transition-transform duration-300"
         />

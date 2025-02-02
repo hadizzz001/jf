@@ -296,7 +296,7 @@ export default function Home() {
                             }}
                           >
                             <img
-                              src={category.img[0]}
+                            src={`api/proxy?url=${category.img[0]}`} 
                               alt={category.name}
                               style={{ display: 'none' }}
                             />
@@ -374,7 +374,7 @@ export default function Home() {
                       <a href={`product?id=${product.id}`} style={{ textDecoration: "none", color: "inherit" }}>
                         <img
                           loading="lazy"
-                          src={product.img[0]}
+                          src={`api/proxy?url=${product.img[0]}`} 
                           alt={product.title}
                           style={{
                             width: "250px",

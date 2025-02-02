@@ -219,13 +219,13 @@ const Dashboard = () => {
                   <div key={index} className="p-4 border rounded-lg shadow-md hover:shadow-lg transition">
                     {item.img && (
                       <div className="relative">
-                        <img
-                          src={item.img[0]}
+                        <img 
+                          src={`api/proxy?url=${item.img[0]}`}
                           alt={item.title}
                           className="w-full aspect-[1/1] object-cover mb-4 transition-all duration-300"
                         />
                         <img
-                          src={item.img[1]}
+                        src={`api/proxy?url=${item.img[1]}`} 
                           alt={item.title}
                           className="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-300 hover:opacity-100"
                         />

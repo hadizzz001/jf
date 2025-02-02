@@ -273,8 +273,8 @@ const PageContent = ({ search }) => {
                               : 0.5,
                         }}
                       >
-                        <img
-                          src={img}
+                        <img 
+                          src={`api/proxy?url=${img}`}
                           alt={`thumbnail-${index}`}
                           className="w-full h-full object-cover cursor-pointer"
                           onClick={() => handleThumbnailClick(index)}
@@ -333,7 +333,7 @@ const PageContent = ({ search }) => {
               >
                 {imgs && imgs.length > 0 ? (
                   <img
-                    src={imgs[currentImageIndex]}
+                  src={`api/proxy?url=${imgs[currentImageIndex]}`} 
                     alt={`image-${currentImageIndex}`}
                     className="w-full h-full object-cover rounded-lg transition-all  ease-in-out"
                     id="mainImage"
@@ -373,8 +373,8 @@ const PageContent = ({ search }) => {
                 <div className="flex justify-center overflow-x-auto space-x-4 mx-8">
                   {imgs.map((img, index) => (
                     <img
-                      key={index}
-                      src={img}
+                      key={index} 
+                      src={`api/proxy?url=${img}`}
                       alt={`thumbnail-${index}`}
                       className={`w-16 h-16 object-cover rounded-lg cursor-pointer transition-transform duration-300 ease-in-out ${currentImageIndex === index
                         ? "scale-105 border-2 border-blue-600"
@@ -412,7 +412,7 @@ const PageContent = ({ search }) => {
               <div className="relative w-full">
                 {imgs && imgs.length > 0 ? (
                   <img
-                    src={imgs[currentImageIndex]}
+                    src={`api/proxy?url=${imgs[currentImageIndex]}`} 
                     alt={`image-${currentImageIndex}`}
                     className="w-full h-64 object-cover rounded-lg transition-all duration-100 ease-in-out"
                   />
@@ -636,7 +636,7 @@ const PageContent = ({ search }) => {
           {embedUrl ? (
             <div className="w-full h-full" style={{ width: "50%", marginLeft: "auto", marginRight: "auto" }}>
               <iframe
-                src={embedUrl}
+              src={`api/proxy?url=${embedUrl}`} 
                 title="YouTube Video"
                 frameBorder="0"
                 allowFullScreen
