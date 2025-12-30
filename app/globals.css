@@ -74,3 +74,25 @@ a:focus, a:hover {
   border: 1px solid #2585f8 !important;
   background: transparent !important;
 }
+
+
+.homepage-video-section {
+  position: relative;
+  min-height: 100vh;
+}
+
+.Video-content-box-with-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.video-content-inner {
+  max-width: 900px;
+  text-align: center;
+}

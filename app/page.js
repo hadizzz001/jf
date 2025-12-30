@@ -170,7 +170,7 @@ export default function Home() {
           <div className="container">
             <div data-content-region="home_below_banner_section" />
           </div>
-          <section className="homepage-video-section our-story-with-text">
+          <section className=" homepage-video-section our-story-with-text">
             <div className="video-box">
               <div className="video-body">
                 <div className="video-thumbnail-box with-text">
